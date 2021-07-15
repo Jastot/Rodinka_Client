@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div class="header">
+        <h1>header</h1>
+        <button>button</button>
+    </div> -->
+    <div class="content">
+
+        <form [formGroup]="patientForm">
+        <div class="box">
+            <div class="item1">
+                <h3>patient_fio</h3>
+                <div *ngFor="let item of testObject | keyvalue">
+                    Key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b>
+                </div>
+            </div>
+            <div class="item2">
+                
+                <div class="block">
+                    <div class="text" >
+                        <h3>диагноз</h3>
+                        <button   (click)="changeDi()">
+                            <span>{{toggleText}}</span></button>
+                    </div>
+                        <input  class="itemInfo" type="diagnoz"  name="diagnoz"  formControlName="diagnoz">
+                </div>
+                <div class="block">
+                    <div class="text">
+                        <h3>консультации</h3>
+                        <button (click)="createCon()">Изменить</button>
+                    </div>
+                    <div class="itemInfo">Info</div>
+                </div>
+                <div class="block">
+                    <div class="text">
+                        <h3>операции</h3>
+                        <button (click)="createOp()">Изменить</button>
+                    </div>
+                    <div class="itemInfo">Info</div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+</body>
+</html>

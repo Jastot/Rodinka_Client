@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header_list{
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(10deg, rgba(52,127,137,1) 0%, rgba(16,44,84,1) 50%, rgba(52,127,137,1) 100%);
+  }
+  .header_list_button .headerButton{
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 1000px;
+      margin: 0px 10px;
+      
+  }
+  .header_list .header_title{
+      font-size: 35px;
+      color: #F5F9FF;
+      margin: auto 0px;
+      font-family: 'Roboto', sans-serif;
+  }

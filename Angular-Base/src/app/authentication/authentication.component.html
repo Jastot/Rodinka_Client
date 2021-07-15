@@ -1,0 +1,60 @@
+<!-- <div class="container">
+    <form [formGroup]="authForm" >
+      <div class="col-12">
+        <div class="form-group" style="position: absolute;
+        top: 25%;
+        left: 47%;
+        margin-top: -50px;
+        margin-left: -50px;
+        width: 200px;
+        height: 100px;">
+          <div style="width: 200px;"><span style="margin-top: 5px; position: relative; left: 21%; ">Аутентификация</span></div>
+          <input class="row input-group-text form-control" style="margin-top: 5px; width:190px; position: relative;" placeholder="Логин" type="text" formControlName="login" />
+          <input class="row input-group-text form-control" style="margin-top: 5px; width:190px; position: relative;" placeholder="Пароль" type="text" formControlName="password" />
+       
+      
+      <div class="col-12" style="margin-left: -1.3%;">
+        <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onLogin()" >Войти</button>
+        <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()">Регистрация</button>
+      </div>
+    </div>
+    </div>
+    </form>
+  </div> -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+      <form [formGroup]="authForm" >
+        <h1>Авторизация</h1>
+        <div class="box">
+            <div class="input_s_box">
+                <div class="input_s">
+                    <input type="text" placeholder=" Введите Логин"formControlName="login" >
+                </div>
+                <div class="input_s">
+                    <div class="password">
+                        <input type="password" placeholder="Введите пароль" name="password"  formControlName="password">
+                    </div>
+                </div>
+            </div>
+            <div class="button_s">
+                <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()" >Регистрация</button>
+                <div class="remember">
+                    Запомнить пароль
+                    <input type="checkbox" id="checkbox_check" class="rememberBox" formControlName="rmbME">
+                </div>
+                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onLogin()"  >Войти</button>
+            </div>
+          
+        </div>
+      </form>
+      </div>
+</body>
+</html>
