@@ -2,8 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IUser } from '../interfaces/user-interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from '../services/user.service';
 import { AuthService } from './auth.service/auth.service';
+
 
 @Component({
   selector: 'app-authentication',
@@ -15,6 +15,7 @@ export class AuthenticationComponent implements OnInit {
 
   constructor(private activatedRouter: ActivatedRoute, // хранит url адрес и параметры
     private router: Router,
+     
     private authService: AuthService) {
       this.authForm = new FormGroup({
         login: new FormControl(null,[Validators.required]),
@@ -54,5 +55,7 @@ export class AuthenticationComponent implements OnInit {
   onRegistration()
   {
     this.router.navigate([`/registration`]);
+    
+     
   }
 }

@@ -29,6 +29,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
   }
 
   async onRegistration() {
@@ -46,6 +47,7 @@ export class RegistrationComponent implements OnInit {
   onBackToLogin()
   {
     this.router.navigate([`/`]);
+    
   }
 
 }

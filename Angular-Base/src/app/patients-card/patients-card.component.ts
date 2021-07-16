@@ -25,10 +25,10 @@ export class PatientsCardComponent implements OnInit {
   id: string = "";
 
   async ngOnInit() {
-    console.log(this.activatedRouter.snapshot.url[2].path);
+    // console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
-    console.log(res);
+    // console.log(res);
     this.patients = res.data[0];
     this.addSome();
   

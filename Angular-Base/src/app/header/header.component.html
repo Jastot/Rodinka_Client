@@ -21,6 +21,7 @@
   </nav> -->
   <!-- <!DOCTYPE html>
   <html lang="ru"> -->
+    
   <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,14 +31,17 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   </head>
-
+  <div class="content">
+    <form [formGroup]="registrForm">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
       <div class="header_list">
-          <div class="header_title">Э.С.О.Н.К. 🢣 ??????? ?????</div>
+          <div class="header_title" >Э.С.О.Н.К. 🢣 {{ header_top }}</div>
             <div class="header_list_button">
-            <button class="headerButton">🢠 Назад</button>
-            <button class="headerButton">🚪 Выйти</button>
+            <button class="headerButton" *ngIf="this.isButtonVisible">🢠 Назад</button>
+            <button class="headerButton" *ngIf="this.isButtonVisiblexite" (click)='exit()'>🚪 Выйти</button>
           </div>
         </div>
       </nav>
   <hr>
+    </form>
+
