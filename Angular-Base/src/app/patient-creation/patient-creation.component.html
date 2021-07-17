@@ -1,1 +1,40 @@
-<p>patient-creation works!</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="patient-creation.component.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content">
+        <form [formGroup]="patForm">
+
+    <div class="content_spiski">
+        <div class="box_spiski">
+            <div class="input_s_box">
+                <div class="input_s">
+                    <input type="text" class="form-control" formControlName="name" placeholder=" Имя">
+                    <input type="text" class="form-control" formControlName="surname" placeholder=" Фамилия">
+                    <input type="text" class="form-control" formControlName="additional_name" placeholder=" Отчество">
+                </div>
+                <div class="input_s">
+                    <input type="text" class="form-control" formControlName="email" placeholder=" Email">
+                    <input type="date" class="form-control" formControlName="dateOfBirth" placeholder=" Дата рождения">
+                </div>
+            </div>
+            <div class="button_s">
+                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onBackToDoctor()" >Отмена</button>
+                <button [disabled]="patForm.invalid" type="button" class="btn btn-success btn-lg btn-block" (click)="addPatient()" >Добавить</button>
+            </div>
+        </div>
+    </div>
+        </form>
+    </div>
+</body>
+</html>

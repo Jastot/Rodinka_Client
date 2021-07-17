@@ -1,0 +1,227 @@
+body{
+    background-color: #F5F9FF;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.content{
+    text-align: center;
+}
+.content h1{
+    margin: 30px auto;
+}
+.box{
+    width: 50%;
+    margin: 0px auto;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    background-color: #EEF4FF;
+    box-shadow:
+    -15px -15px 2px -5px rgba(123,51,90,.5),
+    -15px 15px 2px -5px rgba(60,74,123,.5),
+    15px -15px 2px -5px rgba(255,0,0,.5),
+    15px 15px 2px -5px rgba(60,123,68,.5);
+}
+
+.box_list{
+    width: 90%;
+    margin: 30px auto;
+    border-radius: 15px;
+    padding: 20px 20px 80vh 20px;
+    align-content: center;
+    background-color: #CDD9ED;
+
+    /* box-shadow:
+    -15px -15px 2px -5px rgba(123,51,90,.5),
+    -15px 15px 2px -5px rgba(60,74,123,.5),
+    15px -15px 2px -5px rgba(255,0,0,.5),
+    15px 15px 2px -5px rgba(60,123,68,.5); */
+}
+.header{
+	background: #cb2d41;
+	height: 70px;
+}
+.input_s_box {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_s_box .input_s{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.input_s input{
+    width: 100%;
+    margin: 5px auto;
+    border-radius: 4px;
+    border-width: 0px 0px 1px 0px;
+    height: 39px;
+    font-size: 16px;
+}
+.input_s select{
+    width: 100%;
+    margin: 5px auto;
+    border-radius: 4px;
+    border: none;
+    border-width: 0px 1px 1px 0px;
+    height: 39px;
+    cursor: pointer;
+}
+.button_s{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.button_s button{
+    cursor: pointer;
+    border-width: 0px 0px 1px 0px;
+    background-color: #EEF4FF;
+    font-size: 17px;
+}
+.button_s .remember{
+    border: 1px solid black;
+    border-width: 0px 0px 1px 0px;
+    font-size: 17px; 
+}
+.button_s .remember .rememberBox{
+    width: 17px;
+    height: 17px;
+}
+.password {
+	
+	position: relative;
+}
+#password-input {
+
+	padding: 5px 0;
+	height: 30px;
+	line-height: 40px;
+	text-indent: 10px;
+	border-radius: 4px;
+    border-width: 0px 0px 1px 0px;
+	font-size: 16px;
+}
+.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.password-control.view {
+	background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+}
+* {
+    outline: 0;
+    font-family: sans-serif
+  }
+  body {
+    background-color: #fafafa
+  }
+  span.msg,
+  span.choose {
+    color: #555;
+    padding: 5px 0 10px;
+    display: inherit
+  }
+  .container {
+    width: 500px;
+    margin: 50px auto 0;
+    text-align: center
+  }
+  
+  /*                    Дальше начинается CSS для файла spiski.html                       */
+
+  .header_list{
+    padding: 7px;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(10deg, rgba(52,127,137,1) 0%, rgba(16,44,84,1) 50%, rgba(52,127,137,1) 100%);
+  }
+  .header_list_button .headerButton{
+      padding: 15px;
+      cursor: pointer;
+      border-radius: 1000px;
+      margin: 0px 10px;
+      
+  }
+  .header_list .header_title{
+      font-size: 35px;
+      color: #F5F9FF;
+      margin: auto 0px;
+      font-family: 'Roboto', sans-serif;
+  }
+  .container_spiski {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center
+  }
+  .box_spiski{
+    width: 88%;
+    margin: 50px auto;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    background-color: #EEF4FF;
+    box-shadow:
+    -15px -15px 2px -5px rgba(123,51,90,.5),
+    -15px 15px 2px -5px rgba(60,74,123,.5),
+    15px -15px 2px -5px rgba(255,0,0,.5),
+    15px 15px 2px -5px rgba(60,123,68,.5);
+}
+  .dropdown {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid black;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all .5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
+  }
+  .dropdown .select {
+      cursor: pointer;
+      display: block;
+      padding: 10px
+  }
+  .dropdown:hover {
+      box-shadow: 0 0 4px rgb(204, 204, 204)
+  }
+  .dropdown:active {
+      background-color: #f8f8f8
+  }
+  .dropdown.active:hover,
+  .dropdown.active {
+      box-shadow: 0 0 4px rgb(204, 204, 204);
+      border-radius: 2px 2px 0 0;
+      background-color: #f8f8f8
+  }
+  .dropdown .dropdown-menu {
+      position: relative;
+      background-color: #fff;
+      width: 100%;
+      left: 0;
+      margin-top: 1px;
+      box-shadow: 0 1px 2px rgb(204, 204, 204);
+      border-radius: 0 1px 2px 2px;
+      overflow: hidden;
+      display: none;
+      z-index: 9;
+      border: 1px solid black;
+    padding: 10px 0px 10px 0px;
+  }

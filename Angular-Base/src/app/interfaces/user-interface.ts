@@ -7,5 +7,5 @@ export interface IUser {
     dataOfBirth?: string;
     token?: string;
     rmbMe?: boolean;
-    role?: 'doctor' | 'patient' | 'admin';
+    userType?: 'doctor' | 'client' | 'admin';
 }

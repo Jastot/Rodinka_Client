@@ -60,9 +60,14 @@ export class HeaderComponent implements OnInit {
           this.isButtonVisiblexite = false;
           break;
           case 'http://localhost:4200/doctor':
-            this.header_top = 'Здравствуйте, доктор';
+            this.header_top = 'Добропожаловать в дурку';
             this.isButtonVisible = false;
             this.isButtonVisiblexite = true;
+            break;
+            case 'http://localhost:4200/doctor/creationOrInput/-1':
+              this.header_top = 'Добавления пациента в дурку';
+              this.isButtonVisible = true;
+              this.isButtonVisiblexite = true;
 
 
 
