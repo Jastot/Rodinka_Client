@@ -48,7 +48,6 @@ export class AuthenticationComponent implements OnInit {
       password: this.authForm.value.password,
       rmbMe: this.authForm.value.rmbME
     };
-    console.log(user);
     this.authService.login(user);
   }
 
