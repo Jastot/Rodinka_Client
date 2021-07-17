@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit {
   }
   ngDoCheck(): void {
     this.currentRout = window.location.href;
-    console.log(this.currentRout);
     switch(this.currentRout){
       case 'http://localhost:4200/':
         this.header_top = 'Авторизация';

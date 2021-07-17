@@ -37,6 +37,7 @@ export class AuthService {
    */
   async login(user: IUser): Promise<IUser> {
     
+    console.log("auth/login");
     let result = await this.http.post<IUser>(`${this.baseUrl}/auth/login`, user).toPromise();
     console.log(result);
     this.setToken(result);

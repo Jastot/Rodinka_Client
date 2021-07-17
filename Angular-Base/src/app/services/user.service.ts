@@ -22,25 +22,25 @@ export class UserService {
     }
   
     async postUser(data: IUser): Promise<{data:IUser}> {
-      return this.http.post<{data:IUser}>(this.getUrl('/users'), data).toPromise();
+      return this.http.post<{data:IUser}>(this.getUrl('/users/user'), data).toPromise();
     }
   
     async getUserById(id: string) : Promise<{data:IUser[]}> {
       let params = new HttpParams().set("_id",id);
-      return this.http.get<{data:IUser[]}>(this.getUrl(`/users`),{params}).toPromise();
+      return this.http.get<{data:IUser[]}>(this.getUrl(`/users/user`),{params}).toPromise();
     }
 
     async getUsesrByType(role: string) : Promise<IUser[]> {
       let params = new HttpParams().set('role',role);
-      return this.http.get<IUser[]>(this.getUrl(`/users/`),{params}).toPromise();
+      return this.http.get<IUser[]>(this.getUrl(`/users/user`),{params}).toPromise();
     }
  
     async putUserById(id: number, data: IUser ): Promise<IUser> {
-      return this.http.put<IUser>(this.getUrl(`/users/${id}`), data).toPromise();
+      return this.http.put<IUser>(this.getUrl(`/users/user`), data).toPromise();
     }
   
     async deleteUserById(id: any): Promise<IUser> {
-      return this.http.delete<IUser>(this.getUrl(`/users/${id}`)).toPromise();
+      return this.http.delete<IUser>(this.getUrl(`/users/user`)).toPromise();
     }
   
 
