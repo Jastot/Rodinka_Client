@@ -4,7 +4,7 @@ export interface IUser {
     password: string;
     name?: string;
     surname?: string;
-    dataOfBirth?: string;
+    dateOfBirth?: string;
     token?: string;
     rmbMe?: boolean;
     role?: 'doctor' | 'patient' | 'admin';
