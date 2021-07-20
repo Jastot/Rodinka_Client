@@ -9,7 +9,7 @@ import { IUser } from 'src/app/interfaces/user-interface';
 export class AuthService {
   redirectUrl!: string;
   redirectParams!: Params;
-  private baseUrl = 'http://moletrainer.xyz/api';
+  private baseUrl = 'https://moletrainer.xyz/api';
 
   user!: IUser | null;
 
@@ -35,12 +35,12 @@ export class AuthService {
    * @param user
    * @returns
    */
-  async login(user: IUser): Promise<IUser> {
+  async login(user: IUser): Promise<{data:IUser}> {
     
     console.log("auth/login");
-    let result = await this.http.post<IUser>(`${this.baseUrl}/auth/login`, user).toPromise();
+    let result = await this.http.post<{data:IUser}>(`${this.baseUrl}/auth/login`, user).toPromise();
     console.log(result);
-    this.setToken(result);
+    this.setToken(result.data);
     this.linkToApp();
     return result;
   }

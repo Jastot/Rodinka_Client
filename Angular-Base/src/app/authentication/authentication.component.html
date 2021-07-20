@@ -24,37 +24,38 @@
   <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </head>
-<body>
-    <div class="content">
+<body style="background-color: rgb(247, 247, 247);">
       <form [formGroup]="authForm" >
-        <h1>Авторизация</h1>
-        <div class="box">
+        <div class="card" style="width: 50vw; margin: 50px auto;">
+          <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Авторизация</h1>
+          <div class="card-body">
             <div class="input_s_box">
                 <div class="input_s">
                     <input type="text" placeholder=" Введите Логин"formControlName="login" >
                 </div>
                 <div class="input_s">
                     <div class="password">
-                        <input type="password" placeholder="Введите пароль" name="password"  formControlName="password">
+                        <input type="password" id="password-input" placeholder="Введите пароль" name="password"  formControlName="password">
                     </div>
                 </div>
             </div>
             <div class="button_s">
-                <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()" >Регистрация</button>
+                <button  type="button" class="btn btn-outline-secondary" (click)="onRegistration()" >Регистрация</button>
                 <div class="remember">
                     Запомнить пароль
                     <input type="checkbox" id="checkbox_check" class="rememberBox" formControlName="rmbME">
                 </div>
-                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onLogin()"  >Войти</button>
-            </div>
-          
+                <button type="button" class="btn btn-outline-success" (click)="onLogin()"  >Войти</button>
+          </div>
+          </div>
         </div>
       </form>
-      </div>
 </body>
 </html>
