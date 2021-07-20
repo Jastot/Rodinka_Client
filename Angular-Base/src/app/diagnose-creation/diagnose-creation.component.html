@@ -14,38 +14,38 @@
     <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Создать диагноз</h1>
       <div class="card-body">
           <div class="container_spiski">
-              <div class="dropdown">
+              <div class="dropdown" >
                 <div class="select" (click)="toggleShow(0)">
                   <span  >Гистология ▼</span>
                 </div>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" *ngIf="isShowns[0]"  class="row container-fluid"  id="divshow">
                   <input type="text" placeholder=" Текст" class="inputCreateConsultation">
                 </div>
               </div>
 
-              <div class="dropdown">
+              <div class="dropdown" >
                 <div class="select" (click)="toggleShow(1)">
                   <span  >Краткий диагноз ▼</span>
                 </div>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" *ngIf="isShowns[1]"  class="row container-fluid"  id="divshow">
                   <input type="text" placeholder=" Текст" class="inputCreateConsultation">
                 </div>
               </div>
 
-              <div class="dropdown">
+              <div class="dropdown" >
                 <div class="select" (click)="toggleShow(2)">
                   <span  >Стадия TNM ▼</span>
                 </div>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" *ngIf="isShowns[2]"  class="row container-fluid"  id="divshow">
                   <input type="text" placeholder=" Текст" class="inputCreateConsultation">
                 </div>
               </div>
 
-              <div class="dropdown">
-                <div class="select" (click)="toggleShow(3)">
+              <div class="dropdown" >
+                <div class="select" (click)="toggleShow(3)" >
                   <span  >Подробный диагноз ▼</span>
                 </div>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" *ngIf="isShowns[3]"  class="row container-fluid"  id="divshow">
                   <input type="text" placeholder=" Текст" class="inputCreateConsultation">
                 </div>
               </div>

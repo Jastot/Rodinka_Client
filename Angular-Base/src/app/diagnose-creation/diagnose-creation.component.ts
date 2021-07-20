@@ -16,14 +16,11 @@ export class DiagnoseCreationComponent implements OnInit {
     false,
     false,
     false,
-    false,
-    false,
-    false,
-    false,
-    false,
+    false
   ];
 
   toggleShow(id:number) {
+    console.log(id);
   this.isShowns[id] = ! this.isShowns[id];
   }
 
