@@ -17,6 +17,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interseptor/jwt.interceptor';
 import { ConsultationCreationComponent } from './consultation-creation/consultation-creation.component';
+import { DiagnoseCreationComponent } from './diagnose-creation/diagnose-creation.component';
+import { DiagnoseComponent } from './diagnose/diagnose.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import { ConsultationCreationComponent } from './consultation-creation/consultat
     PatientsCardComponent,
     PatientCreationComponent,
     ConsultationComponent,
-    ConsultationCreationComponent
+    ConsultationCreationComponent,
+    DiagnoseCreationComponent,
+    DiagnoseComponent
+    
   ],
   imports: [
     BrowserModule,

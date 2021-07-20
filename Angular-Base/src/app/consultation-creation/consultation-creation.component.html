@@ -1,1 +1,84 @@
-<p>consultation-creation works!</p>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
+  <div class="content">
+
+    <!-- <button (click)="toggleShow()" type="checkbox" >show/hide</button>
+
+    <div *ngIf="isShown" class="row container-fluid"  id="divshow" >
+    Div Content -->
+
+    <!-- </div> -->
+    
+        <div class="box_spiski">
+          <form>
+            <div class="container_spiski">
+              <div class="dropdown">
+                <div class="select" >
+                  <span  (click)="toggleShow(6)"> Диагноз ▼</span>
+                </div>
+                <div class="dropdown-menu" *ngIf="isShowns[6]" class="row container-fluid"  id="divshow">
+                  <input type="text" formControlName="diagnose" placeholder=" Текст" class="inputCreateConsultation">
+                </div>
+              </div>
+                <div class="dropdown">
+                  <div class="select">
+                    <span  (click)="toggleShow(0)">Жалобы ▼</span>
+                  <div class="dropdown-menu" *ngIf="isShowns[0]" class="row container-fluid"  id="divshow">
+                    <input type="text" formControlName="complaints" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+                </div>
+
+                <div class="dropdown" (click)="toggleShow(1)">
+                  <div class="select">
+                    <span  (click)="toggleShow(1)">Анамнез ▼</span>
+                  </div>
+                  <div class="dropdown-menu" *ngIf="isShowns[1]" class="row container-fluid"  id="divshow" >
+                    <input type="text" formControlName="anamnesis" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+
+                <div class="dropdown" >
+                  <div class="select">
+                    <span (click)="toggleShow(2)">Дерматоскопия ▼</span>
+                  </div>
+                  <div class="dropdown-menu" *ngIf="isShowns[2]" class="row container-fluid"  id="divshow">
+                    <input type="text" formControlName="dermatoscopy" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+
+                <div class="dropdown" >
+                  <div class="select">
+                    <span (click)="toggleShow(3)">План обследования ▼</span>
+                  </div>
+                  <div class="dropdown-menu" *ngIf="isShowns[3]" class="row container-fluid"  id="divshow">
+                    <input type="text" formControlName="survey" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+
+                <div class="dropdown" >
+                  <div class="select">
+                    <span (click)="toggleShow(4)">"Рекомендации ▼</span>
+                  </div>
+                  <div class="dropdown-menu" *ngIf="isShowns[4]" class="row container-fluid"  id="divshow">
+                    <input type="text" formControlName="recommendations" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <div class="select">
+                    <span  (click)="toggleShow(5)"> Гистология ▼</span>
+                  </div>
+                  <div class="dropdown-menu" *ngIf="isShowns[5]" class="row container-fluid"  id="divshow">
+                    <input type="text" formControlName="histology" placeholder=" Текст" class="inputCreateConsultation">
+                  </div>
+                </div>
+          <!-- фото загружаем в консультации и показываем тоже.  -->
+          </div>
+        </form>
+          <div class="button_s">
+            <button (click)="goBack()">Отмена</button>
+            <button (click)="create()">Продолжить</button>
+        </div>
+        </div>
+    </div>

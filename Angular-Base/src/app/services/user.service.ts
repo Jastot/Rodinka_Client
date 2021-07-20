@@ -9,7 +9,7 @@ import { IUser } from '../interfaces/user-interface';
 })
 export class UserService {
 
-    private baseUrl = 'http://moletrainer.xyz/api';
+    private baseUrl = 'https://moletrainer.xyz/api';
 
     constructor(public http: HttpClient) {
 
@@ -25,9 +25,11 @@ export class UserService {
       return this.http.post<{data:IUser}>(this.getUrl('/users/user'), data).toPromise();
     }
   
-    async getUserById(id: string) : Promise<{data:IUser[]}> {
+    async getUserById(id: string) : Promise<{data:IUser}> {
       let params = new HttpParams().set("_id",id);
-      return this.http.get<{data:IUser[]}>(this.getUrl(`/users/user`),{params}).toPromise();
+      console.log(params);
+      // вопрос к Андрею
+      return this.http.get<{data:IUser}>(this.getUrl(`/users/user/`),{params}).toPromise();
     }
 
     async getUsesrByType(role: string) : Promise<IUser[]> {

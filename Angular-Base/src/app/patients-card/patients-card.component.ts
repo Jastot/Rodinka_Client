@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'app-patients-card',
@@ -23,55 +24,51 @@ export class PatientsCardComponent implements OnInit {
       });
      }
   id: string = "";
-
+ 
+  reverseKeyOrder = (a: KeyValue<string,string | undefined>, b: KeyValue<string,string | undefined>): number => {
+    return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
+  }
   async ngOnInit() {
-    // console.log(this.activatedRouter.snapshot.url[2].path);
+    console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
-    // console.log(res);
-    this.patients = res.data[0];
-    this.addSome();
+    console.log(res.data);
+    this.patients = res.data;
+    console.log(this.patients);
+    this.addSome(this.patients);
   
   }
 
   toggleText: string = "Изменить";
   
 
-  testObject: { [key: string]: string|undefined } =
+  testObject: { [key: string]: string | undefined} =
   {
-    surname: undefined,
-    name: undefined,
-    email: undefined,
+    
   };
 
-  addSome()
+  addSome(patient: IUser)
   {
-    this.testObject.surname = this.patients.surname?.toString();
-    this.testObject.name = this.patients.name?.toString();
-    this.testObject.email = this.patients.email?.toString();
+    console.log(patient.dateOfBirth?.slice(0,10));
+    this.testObject = {
+      "Фамилия: ": patient.surname?.toString(),
+      "Имя: ": patient.name?.toString(),
+      "Email: ": patient.email?.toString(),
+      "Дата рождения: ": patient.dateOfBirth?.slice(0,10).toString()
+    }
   }
 
   changeDi()
   {
-    if(this.toggleText == "Изменить")
-    {
-      this.toggleText = "Сохранить";
-    }
-    else
-    {
-      this.toggleText = "Изменить";
-    }
-    
+    this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtDiagnose`]);
   }
   createCon()
   {
-    this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtConsultation`]);
+    this.router.navigate([`doctor/workingWithPatient/${this.id}/creationConsultation`]);
   }
 
   createOp()
   {
     //this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtConsultatio`]);
   }
-// TODO: написать полностью данный модуль (есть дизайн)
-
 }
