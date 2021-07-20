@@ -4,54 +4,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
 </head>
 <body>
-    <!-- <div class="header">
-        <h1>header</h1>
-        <button>button</button>
-    </div> -->
-    <div class="content">
-
         <form [formGroup]="patientForm">
-        <div class="box">
-            <div class="item1">
-                <h3>Информация о пациенте</h3>
-                <div *ngFor="let item of testObject | keyvalue: reverseKeyOrder">
-                     <b>{{item.key}}</b>  <b>{{item.value}}</b>
+            <div class="card" style="width: 90vw; margin: 50px auto;">
+                <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Создать пациента</h1>
+                <div class="card-body">
+                <div class="box1">
+                    <div class="item21">
+                        <div class="block1">
+                            
+                            <div class="text1">
+                                <h3>Информация о пациенте</h3>
+                                
+                            </div>
+                            <div  class="itemInfo1">
+                                <div *ngFor="let item of testObject | keyvalue: reverseKeyOrder">
+                                    <b>{{item.key}}</b>  <b>{{item.value}}</b>
+                               </div>
+                            </div>
+                        </div>
+                        <div class="block1">
+                            <div class="text1">
+                                <h3>Консультации</h3>
+                                <button class="btn btn-outline-secondary"(click)="createCon()">Создать</button>
+                            </div>
+                            <div class="itemInfo1">
+                                 <!-- <p *ngFor="let patient of patients">
+                                <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
+                              </p>  -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item21">
+                        <div class="block1">
+                            <div class="text1">
+                                <h3>Диагноз</h3>
+                                <button class="btn btn-outline-secondary"(click)="changeDi()">Создать</button>
+                            </div>
+                            <div class="itemInfo1">
+                                <!-- <p *ngFor="let patient of patients">
+                                    <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
+                                  </p>  -->
+                            </div>
+                        </div>
+                        <div class="block1">
+                            <div class="text1">
+                                <h3>Операции</h3>
+                                <button class="btn btn-outline-secondary" (click)="createOp()">Создать</button>
+                            </div>
+                            <div class="itemInfo1">
+                                <!-- <p *ngFor="let patient of patients">
+                                    <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
+                                  </p>  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
-            <div class="item2">
+                <!-- </div>
+        
+                <h3>Информация о пациенте</h3>
+                
+            </div> -->
+            <!-- <div class="item2">
                 
                 <div class="block">
                     <div class="text" >
                         <h3>диагноз</h3>
-                        <button   (click)="changeDi()">Создать</button>
+                        <button  class="btn btn-outline-secondary" (click)="changeDi()">Создать</button>
                     </div>
-                    <!-- <p *ngFor="let patient of patients">
+                    <p *ngFor="let patient of patients">
                         <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
-                      </p>  -->
+                      </p> 
                 </div>
                 <div class="block">
                     <div class="text">
                         <h3>консультации</h3>
-                        <button (click)="createCon()">Создать</button>
+                        <button class="btn btn-outline-secondary" (click)="createCon()">Создать</button>
                     </div>
-                    <!-- <p *ngFor="let patient of patients">
+                    <p *ngFor="let patient of patients">
                         <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
-                      </p>  -->
+                      </p> 
                 </div>
                 <div class="block">
                     <div class="text">
                         <h3>операции</h3>
-                        <button (click)="createOp()">Создать</button>
+                        <button class="btn btn-outline-secondary" (click)="createOp()">Создать</button>
                     </div>
-                    <!-- <p *ngFor="let patient of patients">
+                    <p *ngFor="let patient of patients">
                         <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
-                      </p>  -->
-                </div>
-            </div>
-        </div>
+                      </p> 
+                </div> -->
+
     </form>
-    </div>
 </body>
 </html>

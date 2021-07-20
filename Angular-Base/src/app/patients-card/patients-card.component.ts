@@ -60,7 +60,7 @@ export class PatientsCardComponent implements OnInit {
 
   changeDi()
   {
-    this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtDiagnose`]);
+    this.router.navigate([`doctor/workingWithPatient/${this.id}/creationDiagnose`]);
   }
   createCon()
   {

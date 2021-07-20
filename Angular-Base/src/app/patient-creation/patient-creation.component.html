@@ -12,11 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="content">
         <form [formGroup]="patForm">
 
-    <div class="content_spiski">
-        <div class="box_spiski">
+    <div class="card" style="width: 90vw; margin: 50px auto;">
+        <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Создать пациента</h1>
+                  
+        <div class="card-body">
             <div class="input_s_box">
                 <div class="input_s">
                     <input type="text" class="form-control" formControlName="name" placeholder=" Имя">
@@ -29,12 +30,11 @@
                 </div>
             </div>
             <div class="button_s">
-                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onBackToDoctor()" >Отмена</button>
-                <button [disabled]="patForm.invalid" type="button" class="btn btn-success btn-lg btn-block" (click)="addPatient()" >Добавить</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="onBackToDoctor()" >Отмена</button>
+                <button [disabled]="patForm.invalid" type="button" class="btn btn-outline-success" (click)="addPatient()" >Добавить</button>
             </div>
         </div>
     </div>
         </form>
-    </div>
 </body>
 </html>

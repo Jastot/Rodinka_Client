@@ -1,20 +1,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 
-  <div class="content">
-
-    <!-- <button (click)="toggleShow()" type="checkbox" >show/hide</button>
-
-    <div *ngIf="isShown" class="row container-fluid"  id="divshow" >
-    Div Content -->
-
-    <!-- </div> -->
-    
-        <div class="box_spiski">
+  <div class="card" style="width: 90vw; margin: 50px auto;">
+        <div class="card-body">
           <form>
             <div class="container_spiski">
-              <div class="dropdown">
-                <div class="select" >
-                  <span  (click)="toggleShow(6)"> Диагноз ▼</span>
+              <div class="dropdown" >
+                <div class="select" (click)="toggleShow(6)">
+                  <span  > Диагноз ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[6]" class="row container-fluid"  id="divshow">
                   <input type="text" formControlName="diagnose" placeholder=" Текст" class="inputCreateConsultation">

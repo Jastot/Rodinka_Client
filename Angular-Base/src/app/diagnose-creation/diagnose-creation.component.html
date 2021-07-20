@@ -1,1 +1,60 @@
-<p>diagnose-creation works!</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+<div class="card" style="width: 90vw; margin: 50px auto;">
+    <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Создать диагноз</h1>
+      <div class="card-body">
+          <div class="container_spiski">
+              <div class="dropdown">
+                <div class="select" (click)="toggleShow(0)">
+                  <span  >Гистология ▼</span>
+                </div>
+                <div class="dropdown-menu">
+                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="select" (click)="toggleShow(1)">
+                  <span  >Краткий диагноз ▼</span>
+                </div>
+                <div class="dropdown-menu">
+                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="select" (click)="toggleShow(2)">
+                  <span  >Стадия TNM ▼</span>
+                </div>
+                <div class="dropdown-menu">
+                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="select" (click)="toggleShow(3)">
+                  <span  >Подробный диагноз ▼</span>
+                </div>
+                <div class="dropdown-menu">
+                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                </div>
+              </div>
+
+        
+        </div>
+        <div class="button_s">
+          <button class="btn btn-outline-secondary">Отмена</button>
+          <button class="btn btn-outline-success">Сохранить</button>
+      </div>
+      </div>
+  </div>

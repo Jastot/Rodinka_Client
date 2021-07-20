@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params, Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/user-interface';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { IUser } from 'src/app/interfaces/user-interface';
 export class AuthService {
   redirectUrl!: string;
   redirectParams!: Params;
-  private baseUrl = 'http://moletrainer.xyz/api';
+  private baseUrl = 'https://moletrainer.xyz/api';
 
   user!: IUser | null;
 
@@ -77,8 +78,9 @@ export class AuthService {
 
   async setUser() 
   {
+    let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
     let result = await this.http
-      .get<{ data: IUser }>(`${this.baseUrl}/auth/me`)
+      .get<{ data: IUser }>(`${this.baseUrl}/auth/me`,{params})
       .toPromise();
       console.log(result);
   }

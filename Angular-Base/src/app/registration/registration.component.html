@@ -1,75 +1,14 @@
-<!-- <div class="container">
-    <form [formGroup]="registrForm" >
-      <div class="col-12">
-        <div class="form-group" style="position: absolute;
-        top: 25%;
-        left: 47%;
-        margin-top: -50px;
-        margin-left: -50px;
-        width: 200px;
-        height: 100px;">
-          <div style="width: 200px;"><span style="margin-top: 5px; position: relative; left: 21%; ">Регистрация</span></div>
-          <input class="row input-group-text form-control" style="margin-top: 5px; width:190px; position: relative;" placeholder="Логин" type="text" formControlName="login" />
-          <input class="row input-group-text form-control" style="margin-top: 5px; width:190px; position: relative;" placeholder="Пароль" type="text" formControlName="password" />
-       
-      
-      <div class="col-12" style="margin-left: -1.3%;">
-        <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onBackToLogin()" >Вернуться</button>
-        <button  type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()">Зарегистрироваться</button>
-      </div>
-    </div>
-    </div>
-    </form>
-  </div> -->
-  <!-- <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
-<body>
-    <div class="content">
-      <form [formGroup]="registrForm">
-        <h1>Регистрация</h1>
-        <div class="box">
-            <div class="input_s_box">
-                <div class="input_s">
-                    <input type="text" placeholder=" Текст">
-                    <input type="text" placeholder=" Текст">
-                    <input type="text" placeholder=" Текст">
-                    <input type="text" placeholder=" Текст">
-                </div>
-                <div class="input_s">
-                    <input type="text" placeholder=" Текст">
-                    <input type="text" placeholder=" Текст">
-                    <select name="type" id="select_type">
-                        <option value="none" hidden="">
-                            Должность
-                        </option>
-                        <option value="1">Пупа и Лупа</option>
-                        <option value="2">Гена и Гоша</option>
-                        <option value="3">Врач</option>
-                    </select>
-                    <input type="text" placeholder=" Текст">
-                </div>
-            </div>
-            <div class="button_s">
-                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onBackToLogin()">Вернуться</button>
-                <button type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()">Зарегистрироваться</button>
-            </div>
-        </div>
-      </form>
-    </div>
-</body>
-</html> -->
-
-<div class="content">
   <form [formGroup]="registrForm">
-      
-      <h1>Регистрация</h1>
-      <div class="box">
+    <div class="card" style="width: 50vw; margin: 50px auto;">
+      <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Регистрация</h1>
+      <div class="card-body">
           <div class="input_s_box">
               <div class="input_s">
                   <input type="text" class="form-control" formControlName="name" placeholder="Имя">
@@ -82,18 +21,15 @@
                   <input type="email" class="form-control" formControlName="email" placeholder="Почта">
                   
                   <select class="form-control" formControlName="userType">
-                      <!-- <option value="1" [ngValue]="undefined" selected>Должность</option>  -->
                       <option value="doctor">Доктор</option>
                   </select>
                   <input type="password" class="form-control" formControlName="password" placeholder="Пароль">
               </div>
           </div>
           <div class="button_s">
-            <button type="button" class="btn btn-success btn-lg btn-block" (click)="onBackToLogin()">Назад</button>
-            <button [disabled]="registrForm.invalid" type="button" class="btn btn-success btn-lg btn-block" (click)="onRegistration()">Зарегистрироваться</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="onBackToLogin()">Назад</button>
+            <button [disabled]="registrForm.invalid" type="button" class="btn btn-outline-success" (click)="onRegistration()">Зарегистрироваться</button>
           </div>
       </div>
+    </div>
   </form>
-  <script src="inputmask.min.js"></script>
-  <script src="sel.js"></script>
-</div>
