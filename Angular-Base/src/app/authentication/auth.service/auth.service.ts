@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Params, Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/user-interface';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -35,12 +36,12 @@ export class AuthService {
    * @param user
    * @returns
    */
-  async login(user: IUser): Promise<{data:IUser}> {
+  async login(user: IUser): Promise<IUser> {
     
     console.log("auth/login");
-    let result = await this.http.post<{data:IUser}>(`${this.baseUrl}/auth/login`, user).toPromise();
+    let result = await this.http.post<IUser>(`${this.baseUrl}/auth/login`, user).toPromise();
     console.log(result);
-    this.setToken(result.data);
+    this.setToken(result);
     this.linkToApp();
     return result;
   }
@@ -77,8 +78,9 @@ export class AuthService {
 
   async setUser() 
   {
+    let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
     let result = await this.http
-      .get<{ data: IUser }>(`${this.baseUrl}/auth/me`)
+      .get<{ data: IUser }>(`${this.baseUrl}/auth/me`,{params})
       .toPromise();
       console.log(result);
   }

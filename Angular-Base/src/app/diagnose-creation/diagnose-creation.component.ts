@@ -12,4 +12,19 @@ export class DiagnoseCreationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isShowns: boolean[] = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+
+  toggleShow(id:number) {
+  this.isShowns[id] = ! this.isShowns[id];
+  }
+
 }
