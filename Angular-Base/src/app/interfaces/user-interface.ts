@@ -1,3 +1,4 @@
+import { IDiagnose } from './diag.inter';
 export interface IUser {
     _id?: string;
     email: string;
@@ -8,4 +9,8 @@ export interface IUser {
     token?: string;
     rmbMe?: boolean;
     userType?: 'doctor' | 'client' | 'admin';
+    diagnoses?: [IDiagnose];
+    operations?:[];
+    consultations?:[];
+    analyzes?:[];
 }

@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from '../interfaces/user-interface';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../authentication/auth.service/auth.service';
-// import {button_header_back}
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -19,11 +20,11 @@ export class HeaderComponent implements OnInit {
 
   currentRout!: string;
   header_top!: string;
-  
+  a!: any;
   button_header_back!: string;
-  constructor(private activatedRouter: ActivatedRoute, // хранит url адрес и параметры
+  constructor(private activatedRouter: ActivatedRoute, private Location: Location, // хранит url адрес и параметры
     private userService: UserService, public http: HttpClient, private authService: AuthService, private router: Router) {
-      if(this.currentRout != 'http://localhost:4200/'){
+      if(this.currentRout != '/'){
         this.registrForm = new FormGroup({
           email: new FormControl
       });
@@ -47,39 +48,58 @@ export class HeaderComponent implements OnInit {
     };
   }
   ngDoCheck(): void {
-    this.currentRout = window.location.href;
+    this.currentRout = window.location.pathname;
+    this.a = window.location.href.split("/");
+    console.log(this.a[4]);
+    switch(this.a[4]){
+      case 'workingWithPatient':
+        this.header_top = 'Информация о пациенте';
+        this.isButtonVisible = true;
+        this.isButtonVisiblexite = true;  
+    };
+    switch(this.a[6]){
+      case 'creationDiagnose':
+        this.header_top = 'Диагноз';
+        this.isButtonVisible = true;
+        this.isButtonVisiblexite = true;  
+    }
     switch(this.currentRout){
-      case 'http://localhost:4200/':
+      case '/':
         this.header_top = 'Авторизация';
         this.isButtonVisible = false;
         this.isButtonVisiblexite = false;
         break;
-        case 'http://localhost:4200/registration':
+        case '/registration':
           this.header_top = 'Регистрация';
           this.isButtonVisible = false;
           this.isButtonVisiblexite = false;
           break;
-          case 'http://localhost:4200/doctor':
+          case '/doctor':
             this.header_top = 'Здравствуйте, доктор';
             this.isButtonVisible = false;
             this.isButtonVisiblexite = true;
             break;
-            case 'http://localhost:4200/doctor/creationOrInput/-1':
+            case '/doctor/creationOrInput/-1':
               this.header_top = 'Добавления пациента';
               this.isButtonVisible = true;
               this.isButtonVisiblexite = true;
+              break;
+              
 
 
 
 
 
-    }
+    };
     
+  }
+  btnOnBack(){
+    this.Location.back();
   }
   
   async getUserById(id: string) : Promise<{data:IUser[]}> {
     let params = new HttpParams().set("_id",id);
-    return this.http.get<{data:IUser[]}>('http://moletrainer.xyz/api/users',{params}).toPromise();
+    return this.http.get<{data:IUser[]}>('https://moletrainer.xyz/api/users',{params}).toPromise();
   }
   async exit()
   {

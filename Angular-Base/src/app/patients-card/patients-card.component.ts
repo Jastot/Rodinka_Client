@@ -5,6 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KeyValue } from '@angular/common';
+import { IDiagnose } from '../interfaces/diag.inter';
+import { formatDate } from '@angular/common';
+import { DisplayDatePipe } from '../display-date.pipe';
+
 
 @Component({
   selector: 'app-patients-card',
@@ -28,6 +32,10 @@ export class PatientsCardComponent implements OnInit {
   reverseKeyOrder = (a: KeyValue<string,string | undefined>, b: KeyValue<string,string | undefined>): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
+  
+  displayDate (num:number){
+    return  new Date(num*1000);
+  }
   async ngOnInit() {
     console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
@@ -36,7 +44,9 @@ export class PatientsCardComponent implements OnInit {
     this.patients = res.data;
     console.log(this.patients);
     this.addSome(this.patients);
-  
+    
+
+    // this.diagnoses = this.patients.diagnoses;
   }
 
   toggleText: string = "Изменить";

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
-import { IUser } from '../interfaces/user-interface';
+import { IDiagnose } from '../interfaces/diag.inter';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class diagService {
 
     private baseUrl = 'https://moletrainer.xyz/api';
 
@@ -16,37 +16,29 @@ export class UserService {
     private getUrl(url: string = ''): string {
       return this.baseUrl + url;
     }
-    async getUsers() : Promise<{data:IUser[]}>{
+    async getDiag() : Promise<{data:IDiagnose[]}>{
       let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      return this.http.get<{data:IUser[]}>(this.getUrl('/users'), {params}).toPromise();
+      return this.http.get<{data:IDiagnose[]}>(this.getUrl('/diagnoses'), {params}).toPromise();
     }
   
-    async postUser(data: IUser): Promise<{data:IUser}> {
+    async postDiag(data: IDiagnose): Promise<{data:IDiagnose}> {
       let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      return this.http.post<{data:IUser}>(this.getUrl('/users/user'), data,{params}).toPromise();
+      return this.http.post<{data:IDiagnose}>(this.getUrl('/diagnoses/addDiagnosis'), data).toPromise();
     }
   
-    async getUserById(id: string) : Promise<{data:IUser}> {
+    async getDiagById(id: string) : Promise<{data:IDiagnose}> {
       let params = new HttpParams().set("_id",id).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
       console.log(params);
-  
-      return this.http.get<{data:IUser}>(this.getUrl(`/users/user`),{params}).toPromise();
-    }
-
-    async getUsesrByType(role: string) : Promise<IUser[]> {
-      let params = new HttpParams().set('role',role).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      return this.http.get<IUser[]>(this.getUrl(`/users/user`),{params}).toPromise();
+      return this.http.get<{data:IDiagnose}>(this.getUrl(`/diagnoses/getDiagnosis`),{params}).toPromise();
     }
  
-    async putUserById(id: number, data: IUser ): Promise<IUser> {
+    async putDiagById(id: number, data: IDiagnose ): Promise<IDiagnose> {
       let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      return this.http.put<IUser>(this.getUrl(`/users/user`),  data,{params}).toPromise();
+      return this.http.put<IDiagnose>(this.getUrl(`/diagnoses/updateDiagnosis`),  data,{params}).toPromise();
     }
   
-    async deleteUserById(id: any): Promise<IUser> {
+    async deleteDiagById(id: any): Promise<IDiagnose> {
       let params =  new HttpParams().set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      return this.http.delete<IUser>(this.getUrl(`/users/user`), {params}).toPromise();
+      return this.http.delete<IDiagnose>(this.getUrl(`/diagnoses/removeDiagnosis`), {params}).toPromise();
     }
-  
-
-}
+  }

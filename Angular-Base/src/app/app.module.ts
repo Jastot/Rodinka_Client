@@ -13,12 +13,13 @@ import { ConsultationComponent } from './consultation/consultation.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interseptor/jwt.interceptor';
 import { ConsultationCreationComponent } from './consultation-creation/consultation-creation.component';
 import { DiagnoseCreationComponent } from './diagnose-creation/diagnose-creation.component';
 import { DiagnoseComponent } from './diagnose/diagnose.component';
+import { DisplayDatePipe } from './display-date.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DiagnoseComponent } from './diagnose/diagnose.component';
     ConsultationComponent,
     ConsultationCreationComponent,
     DiagnoseCreationComponent,
-    DiagnoseComponent
+    DiagnoseComponent,
+    DisplayDatePipe
     
   ],
   imports: [
@@ -42,7 +44,8 @@ import { DiagnoseComponent } from './diagnose/diagnose.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ],
   providers: [
     {

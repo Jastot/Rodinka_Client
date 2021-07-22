@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
-
+<form [formGroup]="diagForm">
 <div class="card" style="width: 90vw; margin: 50px auto;">
     <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Создать диагноз</h1>
       <div class="card-body">
@@ -19,7 +19,7 @@
                   <span  >Гистология ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[0]"  class="row container-fluid"  id="divshow">
-                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                  <input type="text" placeholder="  Гистология" class="inputCreateConsultation" formControlName="analyzes">
                 </div>
               </div>
 
@@ -28,7 +28,7 @@
                   <span  >Краткий диагноз ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[1]"  class="row container-fluid"  id="divshow">
-                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                  <input type="text" placeholder="  диагноз кратко" class="inputCreateConsultation" formControlName="diagnosisTLDR">
                 </div>
               </div>
 
@@ -37,7 +37,7 @@
                   <span  >Стадия TNM ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[2]"  class="row container-fluid"  id="divshow">
-                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                  <input type="text" placeholder="  Стадия" class="inputCreateConsultation" formControlName="TNMStage">
                 </div>
               </div>
 
@@ -46,15 +46,16 @@
                   <span  >Подробный диагноз ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[3]"  class="row container-fluid"  id="divshow">
-                  <input type="text" placeholder=" Текст" class="inputCreateConsultation">
+                  <input type="text" placeholder="  диагноз" class="inputCreateConsultation" formControlName="diagnosis">
                 </div>
               </div>
 
         
         </div>
         <div class="button_s">
-          <button class="btn btn-outline-secondary">Отмена</button>
-          <button class="btn btn-outline-success">Сохранить</button>
+          <button class="btn btn-outline-secondary" (click)="onback()">Отмена</button>
+          <button class="btn btn-outline-success" [disabled]="diagForm.invalid" type="button" (click)="onAddDiag()">Сохранить</button>
       </div>
       </div>
   </div>
+</form>
