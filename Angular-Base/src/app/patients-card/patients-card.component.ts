@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KeyValue } from '@angular/common';
 import { IDiagnose } from '../interfaces/diag.inter';
-import { formatDate } from '@angular/common';
+
 import { DisplayDatePipe } from '../display-date.pipe';
 
 
@@ -18,6 +18,9 @@ import { DisplayDatePipe } from '../display-date.pipe';
 export class PatientsCardComponent implements OnInit {
   patients!: IUser;
   patientForm: FormGroup;
+  currentRoutt!: any;
+  n!: any;
+  q!: any;
   constructor(private userService: UserService,
     private router: Router, 
     private activatedRouter: ActivatedRoute) {
@@ -81,4 +84,11 @@ export class PatientsCardComponent implements OnInit {
   {
     //this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtConsultatio`]);
   }
+  ngDoCheck(): void {
+    this.currentRoutt = window.location.pathname;
+    this.n = window.location.href.split("/");
+    // console.log(this.n[5]);
+    this.q = this.n[5];
+  }
+  
 }

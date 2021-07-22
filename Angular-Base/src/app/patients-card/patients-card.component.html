@@ -47,7 +47,7 @@
                             </div>
                             <div class="itemInfo1">
                                  <p *ngFor="let diagnosis of patients.diagnoses">
-                                    <a style="font-size: 16px; color:#303030; text-decoration: underline; text-decoration-style:solid;" [routerLink]="['/doctor/workingWithPatient', patients._id]">{{ diagnosis.diagnosisTLDR }}  ({{diagnosis.date | displayDate}})</a>
+                                    <a style="font-size: 16px; color:#303030; text-decoration: underline; text-decoration-style:solid;" [routerLink]="['/doctor/workingWithPatient', {q} ,'/lookingAtDiagnose']">{{ diagnosis.diagnosisTLDR }}  ({{diagnosis.date | displayDate}})</a>
                                   </p>  
                             </div>
                         </div>
