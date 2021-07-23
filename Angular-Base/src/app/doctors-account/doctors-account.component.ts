@@ -30,8 +30,6 @@ export class DoctorsAccountComponent implements OnInit {
 
   async addNewPatient()
   {
-    // создание происходит с -1
-    //редактирование с реального
     this.router.navigate([`/doctor/creationOrInput/-1`]);
   }
 

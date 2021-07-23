@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
   }
   async onRegistration() {
     var registr = this.registrForm.value;
-    console.log(registr);
     try
     {
       await this.userService;
@@ -50,7 +49,6 @@ export class HeaderComponent implements OnInit {
   ngDoCheck(): void {
     this.currentRout = window.location.pathname;
     this.a = window.location.href.split("/");
-    console.log(this.a[4]);
     switch(this.a[4]){
       case 'workingWithPatient':
         this.header_top = 'Информация о пациенте';

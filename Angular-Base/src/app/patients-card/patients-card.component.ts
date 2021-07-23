@@ -40,12 +40,9 @@ export class PatientsCardComponent implements OnInit {
     return  new Date(num*1000);
   }
   async ngOnInit() {
-    console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
-    console.log(res.data);
     this.patients = res.data;
-    console.log(this.patients);
     this.addSome(this.patients);
     
 
@@ -62,7 +59,6 @@ export class PatientsCardComponent implements OnInit {
 
   addSome(patient: IUser)
   {
-    console.log(patient.dateOfBirth?.slice(0,10));
     this.testObject = {
       "Фамилия: ": patient.surname?.toString(),
       "Имя: ": patient.name?.toString(),

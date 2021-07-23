@@ -29,7 +29,7 @@ export class UserService {
     async getUserById(id: string) : Promise<{data:IUser}> {
       let params = new HttpParams().set("_id",id).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
       console.log(params);
-  
+      
       return this.http.get<{data:IUser}>(this.getUrl(`/users/user`),{params}).toPromise();
     }
 

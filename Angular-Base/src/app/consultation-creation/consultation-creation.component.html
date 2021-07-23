@@ -2,28 +2,28 @@
 
   <div class="card" style="width: 90vw; margin: 50px auto;">
         <div class="card-body">
-          <form>
+          <form [formGroup]="consultationForm">
             <div class="container_spiski">
               <div class="dropdown" >
                 <div class="select" (click)="toggleShow(6)">
-                  <span  > Диагноз ▼</span>
+                  <span> Диагноз ▼</span>
                 </div>
                 <div class="dropdown-menu" *ngIf="isShowns[6]" class="row container-fluid"  id="divshow">
                   <input type="text" formControlName="diagnose" placeholder=" Текст" class="inputCreateConsultation">
                 </div>
               </div>
                 <div class="dropdown">
-                  <div class="select">
-                    <span  (click)="toggleShow(0)">Жалобы ▼</span>
+                  <div class="select"(click)="toggleShow(0)">
+                    <span >Жалобы ▼</span></div>
                   <div class="dropdown-menu" *ngIf="isShowns[0]" class="row container-fluid"  id="divshow">
                     <input type="text" formControlName="complaints" placeholder=" Текст" class="inputCreateConsultation">
                   </div>
-                </div>
+                
                 </div>
 
-                <div class="dropdown" (click)="toggleShow(1)">
-                  <div class="select">
-                    <span  (click)="toggleShow(1)">Анамнез ▼</span>
+                <div class="dropdown" >
+                  <div class="select" (click)="toggleShow(1)">
+                    <span>Анамнез ▼</span>
                   </div>
                   <div class="dropdown-menu" *ngIf="isShowns[1]" class="row container-fluid"  id="divshow" >
                     <input type="text" formControlName="anamnesis" placeholder=" Текст" class="inputCreateConsultation">
@@ -31,8 +31,8 @@
                 </div>
 
                 <div class="dropdown" >
-                  <div class="select">
-                    <span (click)="toggleShow(2)">Дерматоскопия ▼</span>
+                  <div class="select" (click)="toggleShow(2)">
+                    <span>Дерматоскопия ▼</span>
                   </div>
                   <div class="dropdown-menu" *ngIf="isShowns[2]" class="row container-fluid"  id="divshow">
                     <input type="text" formControlName="dermatoscopy" placeholder=" Текст" class="inputCreateConsultation">
@@ -40,8 +40,8 @@
                 </div>
 
                 <div class="dropdown" >
-                  <div class="select">
-                    <span (click)="toggleShow(3)">План обследования ▼</span>
+                  <div class="select"(click)="toggleShow(3)">
+                    <span >План обследования ▼</span>
                   </div>
                   <div class="dropdown-menu" *ngIf="isShowns[3]" class="row container-fluid"  id="divshow">
                     <input type="text" formControlName="survey" placeholder=" Текст" class="inputCreateConsultation">
@@ -49,8 +49,8 @@
                 </div>
 
                 <div class="dropdown" >
-                  <div class="select">
-                    <span (click)="toggleShow(4)">"Рекомендации ▼</span>
+                  <div class="select" (click)="toggleShow(4)">
+                    <span >Рекомендации ▼</span>
                   </div>
                   <div class="dropdown-menu" *ngIf="isShowns[4]" class="row container-fluid"  id="divshow">
                     <input type="text" formControlName="recommendations" placeholder=" Текст" class="inputCreateConsultation">
@@ -58,14 +58,24 @@
                 </div>
 
                 <div class="dropdown">
-                  <div class="select">
-                    <span  (click)="toggleShow(5)"> Гистология ▼</span>
+                  <div class="select"(click)="toggleShow(5)">
+                    <span  > Гистология ▼</span>
                   </div>
                   <div class="dropdown-menu" *ngIf="isShowns[5]" class="row container-fluid"  id="divshow">
                     <input type="text" formControlName="histology" placeholder=" Текст" class="inputCreateConsultation">
                   </div>
                 </div>
-          <!-- фото загружаем в консультации и показываем тоже.  -->
+                  <div class="itemInfo1">
+                    <input type="file" formControlName="photoes" name="photo" required multiple
+                    title="Загрузите одну или несколько фотографий" class="inputCreateConsultation_file">
+
+                    <div class="images" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
+                      <ng-container *ngIf="image.show">
+                        <img src={{image.url}}>
+                      </ng-container>
+                    </div>
+                  </div>
+                  
           </div>
         </form>
           <div class="button_s">

@@ -1,3 +1,4 @@
+import { IConsultation } from './consultation-interface';
 import { IDiagnose } from './diag.inter';
 export interface IUser {
     _id?: string;
@@ -11,6 +12,6 @@ export interface IUser {
     userType?: 'doctor' | 'client' | 'admin';
     diagnoses?: [IDiagnose];
     operations?:[];
-    consultations?:[];
+    consultations?:[IConsultation];
     analyzes?:[];
 }
