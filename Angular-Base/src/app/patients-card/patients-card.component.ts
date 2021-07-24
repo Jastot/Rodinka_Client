@@ -74,7 +74,7 @@ export class PatientsCardComponent implements OnInit {
 
   createOp()
   {
-    //this.router.navigate([`doctor/workingWithPatient/${this.id}/lookingAtConsultatio`]);
+    this.router.navigate([`doctor/workingWithPatient/${this.id}/creationOperation`]);
   }
   ngDoCheck(): void {
     this.currentRoutt = window.location.pathname;

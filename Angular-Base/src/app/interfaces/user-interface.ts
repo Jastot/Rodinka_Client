@@ -1,4 +1,5 @@
 import { IDiagnose } from './diag.inter';
+import { IOperation } from './oper.inter';
 export interface IUser {
     _id?: string;
     email: string;
@@ -10,7 +11,7 @@ export interface IUser {
     rmbMe?: boolean;
     userType?: 'doctor' | 'client' | 'admin';
     diagnoses?: [IDiagnose];
-    operations?:[];
+    operations?:[IOperation];
     consultations?:[];
     analyzes?:[];
 }

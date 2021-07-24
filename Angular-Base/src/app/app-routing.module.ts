@@ -9,6 +9,8 @@ import { ConsultationComponent } from './consultation/consultation.component';
 import { ConsultationCreationComponent } from './consultation-creation/consultation-creation.component';
 import { DiagnoseComponent } from './diagnose/diagnose.component';
 import { DiagnoseCreationComponent } from './diagnose-creation/diagnose-creation.component';
+import { OperationComponent } from './operation/operation.component';
+import { OperationCreationComponent } from './operation-creation/operation-creation.component';
 
 const routes: Routes = [
   {path:"", component: AuthenticationComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path:"doctor/creationOrInput/:id", component: PatientCreationComponent},
   {path:"doctor/workingWithPatient/:id", component: PatientsCardComponent},
   {path:"doctor/workingWithPatient/:id/lookingAtDiagnose/:diagnosisId", component: DiagnoseComponent},
+  {path:"doctor/workingWithPatient/:id/lookingAtOperation/:operationId", component: OperationComponent},
   {path:"doctor/workingWithPatient/:id/creationDiagnose", component: DiagnoseCreationComponent},
+  {path:"doctor/workingWithPatient/:id/creationOperation", component: OperationCreationComponent},
   {path:"doctor/workingWithPatient/:id/lookingAtConsultation", component: ConsultationComponent},
   {path:"doctor/workingWithPatient/:id/creationConsultation", component: ConsultationCreationComponent},
 ];
