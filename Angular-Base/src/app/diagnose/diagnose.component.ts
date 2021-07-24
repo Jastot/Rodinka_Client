@@ -32,8 +32,8 @@ export class DiagnoseComponent implements OnInit {
     und = await this.diagservice.getDiagById(this.id)
     if( und != undefined){
     let res =  und;
-    console.log(res.data, 'top');
-    this.patients = res.data;
+    console.log(res.diagnosis, 'top');
+    this.patients = res.diagnosis;
     // console.log(this.patients);
     this.addSome(this.patients);
     }
@@ -56,8 +56,9 @@ export class DiagnoseComponent implements OnInit {
     this.testObject = {
       "Фамилия: ": patient.TNMStage?.toString(),
       "Имя: ": patient.diagnosis?.toString(),
-      "Email: ": patient.analyzes?.toString(),
-      "Дата рождения: ": patient.date?.toString()
+      "Email: ": patient.analyzes.toString(),
+      "Дата рождения: ": patient.date?.toString(),
+      "Диагноз кратко": patient.diagnosisTLDR.toString()
     }
   }
 

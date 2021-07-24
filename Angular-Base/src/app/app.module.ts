@@ -20,6 +20,7 @@ import { ConsultationCreationComponent } from './consultation-creation/consultat
 import { DiagnoseCreationComponent } from './diagnose-creation/diagnose-creation.component';
 import { DiagnoseComponent } from './diagnose/diagnose.component';
 import { DisplayDatePipe } from './display-date.pipe';
+import { OperationComponent } from './operation/operation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DisplayDatePipe } from './display-date.pipe';
     ConsultationCreationComponent,
     DiagnoseCreationComponent,
     DiagnoseComponent,
-    DisplayDatePipe
+    DisplayDatePipe,
+    OperationComponent
     
   ],
   imports: [

@@ -50,18 +50,27 @@ export class HeaderComponent implements OnInit {
   ngDoCheck(): void {
     this.currentRout = window.location.pathname;
     this.a = window.location.href.split("/");
-    console.log(this.a[4]);
+    // console.log(this.a[6], 'ff');
+    
     switch(this.a[4]){
       case 'workingWithPatient':
         this.header_top = 'Информация о пациенте';
         this.isButtonVisible = true;
-        this.isButtonVisiblexite = true;  
+        this.isButtonVisiblexite = true; 
+        break; 
     };
     switch(this.a[6]){
       case 'creationDiagnose':
         this.header_top = 'Диагноз';
         this.isButtonVisible = true;
         this.isButtonVisiblexite = true;  
+        break;
+        case 'lookingAtDiagnose':
+        this.header_top = 'Информация о диагнозе';
+        this.isButtonVisible = true;
+        this.isButtonVisiblexite = true;  
+        break;
+          
     }
     switch(this.currentRout){
       case '/':

@@ -26,11 +26,11 @@ export class diagService {
       return this.http.post<{data:IDiagnose}>(this.getUrl('/diagnoses/addDiagnosis'), data).toPromise();
     }
   
-    async getDiagById(id: string) : Promise<{data:IDiagnose}> {
+    async getDiagById(id: string) : Promise<{diagnosis:IDiagnose}> {
       let params = new HttpParams().set("_id",id).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
       console.log(params);
       let token = localStorage.getItem("token") as string || sessionStorage.getItem("token") as string;
-      return this.http.post<{data:IDiagnose}>(this.getUrl(`/diagnoses/getDiagnosis`),{"_id":id, "token":token}).toPromise();
+      return this.http.post<{diagnosis:IDiagnose}>(this.getUrl(`/diagnoses/getDiagnosis`),{"_id":id, "token":token}).toPromise();
     }
  
     async putDiagById(id: number, data: IDiagnose ): Promise<IDiagnose> {

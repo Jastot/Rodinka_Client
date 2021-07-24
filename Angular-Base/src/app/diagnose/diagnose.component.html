@@ -1,10 +1,33 @@
-
-            
-            
-        
-        <!-- <div class="itemInfo1">
-             <h1 >
-                <a style="font-size: 20px; color:#303030; text-decoration: underline; text-decoration-style:solid;" >{{ diagnoses.TNMStage }}  </a>
-             </h1>  
+<h1>Дата создания диагноза</h1>
+        <div class="itemInfo2">
+             <p >
+                <a style="font-size: 18px; color:#303030; text-decoration: text-decoration-stylesolid" >{{ patients.date | displayDate}}  </a>
+             </p>  
         </div>
-         -->
+            
+            
+        <h1>Дигноз кратко</h1>
+        <div class="itemInfo1">
+             <p >
+                <a style="font-size: 20px; color:#303030; text-decoration: text-decoration-stylesolid" >{{ patients.diagnosisTLDR }}  </a>
+             </p>  
+        </div>
+        <h1>Дигноз полностью</h1>
+        <div class="itemInfo1">
+             <p >
+                <a style="font-size: 20px; color:#303030; text-decoration:  text-decoration-stylesolid" >{{ patients.diagnosis }}  </a>
+             </p>  
+        </div>
+        <h1>Гистология</h1>
+        <div class="itemInfo1">
+             <p >
+                <a style="font-size: 20px; color:#303030; text-decoration:  text-decoration-stylesolid" >{{ patients.analyzes }}  </a>
+             </p>  
+        </div>
+        <h1>Стадия</h1>
+        <div class="itemInfo1">
+             <p >
+                <a style="font-size: 20px; color:#303030; text-decoration: text-decoration-stylesolid" >{{ patients.TNMStage }}  </a>
+             </p>  
+        </div>
+        
