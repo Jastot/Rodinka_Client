@@ -1,5 +1,5 @@
 export interface IDiagnose {
-    _id?: string;
+    id?: string;
     date: number;
     analyzes: string;
     diagnosisTLDR: string;

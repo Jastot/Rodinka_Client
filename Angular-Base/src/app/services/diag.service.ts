@@ -29,7 +29,8 @@ export class diagService {
     async getDiagById(id: string) : Promise<{data:IDiagnose}> {
       let params = new HttpParams().set("_id",id).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
       console.log(params);
-      return this.http.get<{data:IDiagnose}>(this.getUrl(`/diagnoses/getDiagnosis`),{params}).toPromise();
+      let token = localStorage.getItem("token") as string || sessionStorage.getItem("token") as string;
+      return this.http.post<{data:IDiagnose}>(this.getUrl(`/diagnoses/getDiagnosis`),{"_id":id, "token":token}).toPromise();
     }
  
     async putDiagById(id: number, data: IDiagnose ): Promise<IDiagnose> {

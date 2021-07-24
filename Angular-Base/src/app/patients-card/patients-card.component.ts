@@ -5,10 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KeyValue } from '@angular/common';
-import { IDiagnose } from '../interfaces/diag.inter';
-
-import { DisplayDatePipe } from '../display-date.pipe';
-
+import { diagService } from '../services/diag.service';
 
 @Component({
   selector: 'app-patients-card',
@@ -21,7 +18,7 @@ export class PatientsCardComponent implements OnInit {
   currentRoutt!: any;
   n!: any;
   q!: any;
-  constructor(private userService: UserService,
+  constructor(private userService: UserService, private diagservice: diagService,
     private router: Router, 
     private activatedRouter: ActivatedRoute) {
       this.patientForm = new FormGroup({
@@ -35,21 +32,16 @@ export class PatientsCardComponent implements OnInit {
   reverseKeyOrder = (a: KeyValue<string,string | undefined>, b: KeyValue<string,string | undefined>): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
-  
-  displayDate (num:number){
-    return  new Date(num*1000);
-  }
   async ngOnInit() {
     console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
+    
     console.log(res.data);
     this.patients = res.data;
     console.log(this.patients);
     this.addSome(this.patients);
-    
-
-    // this.diagnoses = this.patients.diagnoses;
+  
   }
 
   toggleText: string = "Изменить";
@@ -62,7 +54,7 @@ export class PatientsCardComponent implements OnInit {
 
   addSome(patient: IUser)
   {
-    console.log(patient.dateOfBirth?.slice(0,10));
+    console.log(patient, 'cringe 2.0');
     this.testObject = {
       "Фамилия: ": patient.surname?.toString(),
       "Имя: ": patient.name?.toString(),
@@ -89,6 +81,10 @@ export class PatientsCardComponent implements OnInit {
     this.n = window.location.href.split("/");
     // console.log(this.n[5]);
     this.q = this.n[5];
+    console.log(this.patients, 'cringe');
   }
-  
 }
+function getDiagById(id: string) {
+  throw new Error('Function not implemented.');
+}
+
