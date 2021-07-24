@@ -66,14 +66,18 @@
                   </div>
                 </div>
                   <div class="itemInfo1">
-                    <input type="file" formControlName="photoes" name="photo" required multiple
-                    title="Загрузите одну или несколько фотографий" class="inputCreateConsultation_file">
-
-                    <div class="images" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
+                    <div class="form-group">
+                      <label for="file">Choose File</label>
+                      <input type="file"
+                            id = "file"
+                            class="file-upload"
+                             (change)="handleFileInput($event)">
+                      </div>
+                    <!-- <div class="images" *ngFor="let image of imagesList" (deferLoad)="image.show = true">
                       <ng-container *ngIf="image.show">
                         <img src={{image.url}}>
                       </ng-container>
-                    </div>
+                    </div> -->
                   </div>
                   
           </div>

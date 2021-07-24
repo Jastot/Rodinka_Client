@@ -7,6 +7,7 @@ import { ConsultationService } from '../services/consultation.servise';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SomeImage } from '../interfaces/some-image';
+import { fileService } from '../services/file-upload.service';
 
 @Component({
   selector: 'app-consultation-creation',
@@ -22,7 +23,8 @@ export class ConsultationCreationComponent implements OnInit {
 consultationForm: FormGroup
   constructor(private ConsultationService: ConsultationService,
     private Location: Location,
-    private activatedRouter: ActivatedRoute
+    private activatedRouter: ActivatedRoute,
+    private fileService : fileService
     ) {
       this.imagesList = [];
       this.image = document.images;
@@ -45,12 +47,15 @@ consultationForm: FormGroup
  
    ngOnInit(): void {
   }
-
-  ngOnChanges(): void {
-    // do something with this.someInput
-    // creatingImage();
+ 
+  fileToUpload: File | null = null;
+  handleFileInput(event: Event) {
+    this.fileToUpload = (<HTMLInputElement>event.target)?.files![0];
+   // this.creatingImage();
   }
-
+  // uploadFileToActivity() {
+  //   this.fileUploadService.postFile(this.fileToUpload);
+  // }
   isShowns: boolean[] = [
     false,
     false,
@@ -71,9 +76,25 @@ consultationForm: FormGroup
     console.log(registr);
     this.id = this.activatedRouter.snapshot.url[2].path;
     console.log("id: ", this.id);
+    
     try
     {
-      await this.ConsultationService.postConsultation(this.id,registr);
+      let a = await this.ConsultationService.postConsultation(this.id,registr);
+
+      console.log(this.fileToUpload);
+      var fd = new FormData();
+      fd.append('id',`${a.data._id}`)
+      fd.append('token',localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
+      fd.append('img',<File> this.fileToUpload, this.fileToUpload?.name);
+      
+      // formData.append('userpic[]', myFileInput1.files[0], 'chris1.jpg');
+      // formData.append('userpic[]', myFileInput2.files[0], 'chris2.jpg');
+      console.log(fd.get('id'));
+      console.log(fd.get('token'));
+      console.log(fd.get('img'));
+      
+      await this.fileService.postphoto(fd);
+
       this.Location.back();
     } 
     catch(err){
@@ -82,23 +103,23 @@ consultationForm: FormGroup
   
   }
   
-  creatingImage(id:number)
-  {
-    for (let i = 0; i < 50; i++) {
-      const url = 'https://loremflickr.com/640/480?random=' + (i + 1);
-      this.imagesList[i] = {
-        url: url,
-        show: true
-      };
-    }
-    console.log(this.imagesList);
-    var r = this.imagesList[id];
-    var downloadingImage = new Image();
-    downloadingImage.onload = ()=>{
-      URL.revokeObjectURL(downloadingImage.src);   
-  };
-  downloadingImage.src = URL.createObjectURL(r.url);
-  }
+  // creatingImage()
+  // {
+  //   // for (let i = 0; i < 50; i++) {
+  //   //   const url = 'https://loremflickr.com/640/480?random=' + (i + 1);
+  //   //   this.imagesList[i] = {
+  //   //     url: url,
+  //   //     show: true
+  //   //   };
+  //   // }
+  //   console.log(this.imagesList);
+  //   var r = this.imagesList[0];
+  //   var downloadingImage = new Image();
+  //   downloadingImage.onload = ()=>{
+  //     URL.revokeObjectURL(downloadingImage.src);   
+  // };
+  // downloadingImage.src = URL.createObjectURL(r.url);
+  // }
 
   goBack()
   {
