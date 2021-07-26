@@ -54,11 +54,12 @@
                         <div class="block1">
                             <div class="text1">
                                 <h3>Операции</h3>
+
                                 <button class="btn btn-outline-secondary" (click)="createOp()">Создать</button>
                             </div>
                             <div class="itemInfo1">
-                                <p *ngFor="let operations of patients.operations">
-                                    <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient']">{{ operations.diagnosis }}</a>
+                                <p *ngFor="let operations of patients.operations?.reverse()">
+                                    <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient']">{{ operations.descriptionTLDR }}  ({{ operations.date | displayDate }})</a>
                                   </p> 
                             </div>
                         </div>
