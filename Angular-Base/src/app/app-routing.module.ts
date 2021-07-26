@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:"doctor/workingWithPatient/:id/lookingAtOperation/:operationId", component: OperationComponent},
   {path:"doctor/workingWithPatient/:id/creationDiagnose", component: DiagnoseCreationComponent},
   {path:"doctor/workingWithPatient/:id/creationOperation", component: OperationCreationComponent},
-  {path:"doctor/workingWithPatient/:id/lookingAtConsultation", component: ConsultationComponent},
+  {path:"doctor/workingWithPatient/:id/lookingAtConsultation/:eid", component: ConsultationComponent},
   {path:"doctor/workingWithPatient/:id/creationConsultation", component: ConsultationCreationComponent},
 ];
 

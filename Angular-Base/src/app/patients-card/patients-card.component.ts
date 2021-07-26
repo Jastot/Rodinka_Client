@@ -33,15 +33,11 @@ export class PatientsCardComponent implements OnInit {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
   async ngOnInit() {
-    console.log(this.activatedRouter.snapshot.url[2].path);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
-    
-    console.log(res.data);
-    this.patients = res.data;
-    console.log(this.patients);
+    this.patients = await res.data;
     this.addSome(this.patients);
-  
+    console.log(this.patients.consultations)
   }
 
   toggleText: string = "Изменить";
@@ -54,7 +50,6 @@ export class PatientsCardComponent implements OnInit {
 
   addSome(patient: IUser)
   {
-    console.log(patient, 'cringe 2.0');
     this.testObject = {
       "Фамилия: ": patient.surname?.toString(),
       "Имя: ": patient.name?.toString(),
