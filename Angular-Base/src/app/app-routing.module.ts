@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:"doctor/creationOrInput/:id", component: PatientCreationComponent},
   {path:"doctor/workingWithPatient/:id", component: PatientsCardComponent},
   {path:"doctor/workingWithPatient/:id/lookingAtDiagnose/:diagnosisId", component: DiagnoseComponent},
-  {path:"doctor/workingWithPatient/:id/lookingAtOperation/:operationId", component: OperationComponent},
+  {path:"doctor/workingWithPatient/:id/lookingAtOperation/:oid", component: OperationComponent},
   {path:"doctor/workingWithPatient/:id/creationDiagnose", component: DiagnoseCreationComponent},
   {path:"doctor/workingWithPatient/:id/creationOperation", component: OperationCreationComponent},
   {path:"doctor/workingWithPatient/:id/lookingAtConsultation/:eid", component: ConsultationComponent},

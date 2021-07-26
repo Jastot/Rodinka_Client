@@ -20,12 +20,12 @@
        </div>
      </div>
      <div class="card mt-2" *ngIf="patients.diagnosis">
-      <div class="card-body">
-        <h3 class="card-title" style="font-weight: bold;">Диагноз</h3>
-        <p class="card-text">{{ patients.diagnosis }}</p>
-      </div>
-    </div>
-     <div class="card mt-2" *ngIf="patients.analyzes">
+       <div class="card-body">
+         <h3 class="card-title" style="font-weight: bold;">Диагноз</h3>
+         <p class="card-text">{{ patients.diagnosis }}</p>
+       </div>
+     </div>
+     <div class="card mt-2" *ngIf="patients.analyzes.length>0">
        <div class="card-body">
          <h3 class="card-title" style="font-weight: bold;">Гистология</h3>
          <p class="card-text">{{ patients.analyzes }}</p>

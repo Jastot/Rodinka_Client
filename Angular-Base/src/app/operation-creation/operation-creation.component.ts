@@ -22,7 +22,9 @@ export class OperationCreationComponent implements OnInit {
         recommendations: new FormControl(null, [Validators.required]),
         descriptionTLDR: new FormControl(null, [Validators.required]),
         description: new FormControl(null, [Validators.required]),
-        diagnosis: new FormControl(null, [Validators.required])
+        diagnosis: new FormControl(null, [Validators.required]),
+        date: new FormControl(null, [Validators.required])
+        
       })
     }
 
@@ -33,6 +35,7 @@ export class OperationCreationComponent implements OnInit {
   this.Location.back();
 }  async onAddOper() {
     var diag = this.operForm.value;
+    diag.date=new Date(diag.date).getTime();
     var token = localStorage.getItem('token') || sessionStorage.getItem('token') || null;
     var _id = window.location.pathname.split('/')[3];
     if (token){
@@ -51,6 +54,7 @@ export class OperationCreationComponent implements OnInit {
   }
 
   isShowns: boolean[] = [
+    false,
     false,
     false,
     false,

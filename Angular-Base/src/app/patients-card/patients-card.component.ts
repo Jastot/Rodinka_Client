@@ -47,8 +47,7 @@ export class PatientsCardComponent implements OnInit {
     let res = await this.userService.getUserById(this.id);
     this.patients = await res.data;
     this.addSome(this.patients);
-    console.log(this.patients.consultations)
-    this.newMsg(false);
+    console.log(this.patients.consultations);
   }
 
   toggleText: string = "Изменить";

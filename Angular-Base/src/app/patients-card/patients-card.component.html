@@ -65,9 +65,9 @@
                                 <button class="btn btn-outline-secondary" (click)="createOp()">Создать</button>
                             </div>
                             <div class="itemInfo1">
-                                <!-- <p *ngFor="let patient of patients">
-                                    <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
-                                  </p>  -->
+                                <p *ngFor="let patient of patients.operations?.reverse()">
+                                    <a style="font-size: 16px; color:#303030; text-decoration: underline; text-decoration-style:solid;" [routerLink]="['/doctor/workingWithPatient',q,'lookingAtOperation', patient.id]">{{ patient.descriptionTLDR }}  {{ patient.date | displayDate }}</a>
+                                  </p> 
                             </div>
                         </div>
                     </div>

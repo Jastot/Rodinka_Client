@@ -22,6 +22,8 @@ export class DiagnoseComponent implements OnInit {
   currentRoutt!: any;
   n!: any;
   q!: any;
+  _id:string = this.activatedRouter.snapshot.url[2].path;
+  user!: any;
   constructor(private userService: UserService, private diagservice: diagService,
     private router: Router, 
     private activatedRouter: ActivatedRoute,
@@ -30,7 +32,6 @@ export class DiagnoseComponent implements OnInit {
      }
   id: string = "";
   uid: string = "";
-  user: any;
   reverseKeyOrder = (a: KeyValue<string,string | undefined>, b: KeyValue<string,string | undefined>): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }

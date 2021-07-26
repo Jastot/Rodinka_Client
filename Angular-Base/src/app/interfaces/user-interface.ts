@@ -14,8 +14,8 @@ export interface IUser {
     userType?: 'doctor' | 'client' | 'admin';
     diagnoses?: [{id:string,date:number, diagnosisTLDR:string}];
     operations?:[];
-    doctor?:string,
-    patients?:any[],
+    doctor?:string;
+    patients?:any[];
     consultations?:[{id:string,date:number}];
     analyzes?:[];
 }
