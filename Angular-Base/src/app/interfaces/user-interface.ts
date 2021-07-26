@@ -13,7 +13,7 @@ export interface IUser {
     rmbMe?: boolean;
     userType?: 'doctor' | 'client' | 'admin';
     diagnoses?: [{id:string,date:number, diagnosisTLDR:string}];
-    operations?:[];
+    operations?:any[];
     doctor?:string;
     patients?:any[];
     consultations?:[{id:string,date:number}];
