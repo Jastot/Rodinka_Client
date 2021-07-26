@@ -53,21 +53,13 @@ export class HeaderComponent implements OnInit {
       case 'workingWithPatient':
         this.header_top = 'Информация о пациенте';
         this.isButtonVisible = true;
-        this.isButtonVisiblexite = true; 
-        break; 
+        this.isButtonVisiblexite = true;  
     };
     switch(this.a[6]){
       case 'creationDiagnose':
         this.header_top = 'Диагноз';
         this.isButtonVisible = true;
         this.isButtonVisiblexite = true;  
-        break;
-        case 'lookingAtDiagnose':
-        this.header_top = 'Информация о диагнозе';
-        this.isButtonVisible = true;
-        this.isButtonVisiblexite = true;  
-        break;
-          
     }
     switch(this.currentRout){
       case '/':
@@ -81,12 +73,12 @@ export class HeaderComponent implements OnInit {
           this.isButtonVisiblexite = false;
           break;
           case '/doctor':
-            this.header_top = 'Здравствуйте, доктор';
+            this.header_top = 'Добро пожаловать в систему, доктор!';
             this.isButtonVisible = false;
             this.isButtonVisiblexite = true;
             break;
             case '/doctor/creationOrInput/-1':
-              this.header_top = 'Добавления пациента';
+              this.header_top = 'Добавление пациента';
               this.isButtonVisible = true;
               this.isButtonVisiblexite = true;
               break;

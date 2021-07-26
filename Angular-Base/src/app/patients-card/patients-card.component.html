@@ -22,9 +22,16 @@
                                 
                             </div>
                             <div  class="itemInfo1 pl-2">
-                                <div *ngFor="let item of testObject | keyvalue: reverseKeyOrder">
+                                <div>
+                                    <span *ngIf="patients.name"><b>Имя:</b> {{patients.name}} <br> </span>
+                                    <span *ngIf="patients.surname"><b>Фамилия:</b> {{patients.surname}} <br> </span>
+                                    <span *ngIf="patients.additional_name"><b>Отчество:</b> {{patients.additional_name}} <br> </span>
+                                    <span *ngIf="patients.email"><b>E-mail:</b> {{patients.email}} <br> </span>
+                                    <span *ngIf="patients.dateOfBirth"><b>Дата рождения:</b> {{patients.dateOfBirth | displayDate}} <br> </span>
+                                </div>
+                                <!-- <div *ngFor="let item of testObject | keyvalue: reverseKeyOrder">
                                     <b>{{item.key}}</b>  <b>{{item.value}}</b>
-                               </div>
+                               </div> -->
                             </div>
                         </div>
                         <div class="block1">

@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SomeImage } from '../interfaces/some-image';
 import { fileService } from '../services/file-upload.service';
 import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { GlvarsService } from '../glvars.service';
 
 @Component({
   selector: 'app-consultation-creation',
@@ -16,6 +18,12 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
   styleUrls: ['./consultation-creation.component.css']
 })
 export class ConsultationCreationComponent implements OnInit {
+  newMsg(value:any){
+    this.glvars.changeMessage(value);
+  }
+  message?:any;
+  subscription?: Subscription;
+
   image: HTMLCollectionOf<HTMLImageElement>; 
   imagesList:SomeImage[];
   consultationForm: FormGroup;
@@ -24,7 +32,8 @@ export class ConsultationCreationComponent implements OnInit {
     private Location: Location,
     private activatedRouter: ActivatedRoute,
     private fileService : fileService,
-    private DomSanitizer : DomSanitizer
+    private DomSanitizer : DomSanitizer,
+    private glvars:GlvarsService
     ) {
       this.fileToUpload=null;
       this.imagesList = [];
@@ -51,6 +60,7 @@ export class ConsultationCreationComponent implements OnInit {
 
   fileToUpload: File | null = null;
   handleFileInput(e: Event) {
+    this.newMsg(true);
     this.halt=!this.halt;
     let target = <any>e.target;
     if(target.files[0].length>1){
@@ -66,8 +76,10 @@ export class ConsultationCreationComponent implements OnInit {
       this.halt=!this.halt;
       alert(`Err: ${err.toString()}`);
     })
+    this.newMsg(false);
   }
   async sendPhotos(){
+    this.newMsg(true);
     for (let queueMember of this.photosQueue){
       var fd = new FormData();
       fd.append('_id', this._id);
@@ -81,6 +93,7 @@ export class ConsultationCreationComponent implements OnInit {
       })
     }
     this.photosQueue=[];
+    this.newMsg(false);
   }
   // uploadFileToActivity() {
   //   this.fileUploadService.postFile(this.fileToUpload);
@@ -100,12 +113,14 @@ export class ConsultationCreationComponent implements OnInit {
   this.isShowns[id] = ! this.isShowns[id];
   }
   async create(){
+    this.newMsg(true);
     var registr: IConsultation = this.consultationForm.value;
     this._id = this.activatedRouter.snapshot.url[2].path;
     registr._id=this._id;
     registr.photos=this.photos;
     await this.ConsultationService.addConsultation(registr);
     this.Location.back();  
+    this.newMsg(false);
   }
   
   // creatingImage()

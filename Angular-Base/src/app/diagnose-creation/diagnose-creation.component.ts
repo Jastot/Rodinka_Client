@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { diagService } from '../services/diag.service';
 import {Location} from '@angular/common';
+import { Subscription } from 'rxjs';
+import { GlvarsService } from '../glvars.service';
 
 @Component({
   selector: 'app-diagnose-creation',
@@ -14,9 +16,15 @@ export class DiagnoseCreationComponent implements OnInit {
   currentRout!: string;
   a!: any;
   gg!: any;
+  newMsg(value:any){
+    this.glvars.changeMessage(value);
+  }
+  message?:any;
+  subscription?: Subscription;
 
   constructor(private router3: Router, private Location: Location,
-    private diagService: diagService ) { 
+    private diagService: diagService,
+    private glvars:GlvarsService) { 
       this.diagForm = new FormGroup({
         analyzes: new FormControl(null, [Validators.required]),
         diagnosisTLDR: new FormControl(null, [Validators.required]),
@@ -31,6 +39,7 @@ export class DiagnoseCreationComponent implements OnInit {
 {
   this.Location.back();
 }  async onAddDiag() {
+    this.newMsg(true);
     var diag = this.diagForm.value;
     var token = localStorage.getItem('token') || sessionStorage.getItem('token') || null;
     var _id = window.location.pathname.split('/')[3];
@@ -46,7 +55,7 @@ export class DiagnoseCreationComponent implements OnInit {
     } else {
       alert('WHERE IS TOKEN????????');
     }
-    
+    this.newMsg(false);
   }
 
   isShowns: boolean[] = [

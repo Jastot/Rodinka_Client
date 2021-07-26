@@ -23,4 +23,9 @@ import { HttpClient } from '@angular/common/http';
       let payload = {"_id":id, token}
       return this.http.post<{data:string}>(this.getUrl('/photos/getPhoto'), payload).toPromise();
     }
+    async reqcnn(id:string): Promise<{isBenign:number, isMalignant:number}> {
+      let token = localStorage.getItem('token')||sessionStorage.getItem('token');
+      let payload = {"_id":id, token};
+      return this.http.post<{isBenign:number, isMalignant:number}>(this.getUrl('/photos/requestCNN'), payload).toPromise();
+    }
   }

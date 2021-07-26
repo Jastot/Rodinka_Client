@@ -1,14 +1,39 @@
-<div class="container">
-  
-  <button  type="button" class="btn btn-danger float-right" (click)='addNewPatient()'>Добавить нового</button>
-  <hr>
-  <div class="content">
-    <div class="box_list">
-      <!-- <div [(ngModel)] = "doctor"> -->
-        <p *ngFor="let patient of patients">
-          <a style="word-spacing: 11px;font-size: 20px" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }}  {{ patient.name }}</a>
-        </p> 
-      <!-- </div> -->
+<div class="card" style="width: 90vw; margin: 50px auto;">
+  <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);">
+    Пациенты
+    <input class="rounded" type="text" placeholder="Иван Иванов..." style="margin: 0px 0px 0px 50px; height: 27px; width: 300px; font-size: 17px; border: none; padding: 4px 4px 4px 8px;">
+    <button class="btn btn-outline-dark py-0 px-1 ml-2">Поиск</button>
+  <button  type="button" class="btn btn-outline-dark float-right" (click)='addNewPatient()'>Добавить</button></h1>
+  <!-- <hr> -->
+  <div class="card-body">
+     <div class="w-100" style="font-size: 16px;">
+      <table class="table w-100">
+        <thead style="background-color:rgb(211, 224, 250);">
+          <tr>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Отчество</th>
+            <th scope="col">Почта</th>
+            <th scope="col">Год рождения</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patients">
+            <td><a [routerLink]="['/doctor/workingWithPatient',patient._id]" style="text-decoration: underline; color: inherit;">{{patient.surname}}</a></td>
+            <td>{{patient.name}}</td>
+            <td>{{patient.additional_name}}</td>
+            <td>{{patient.email}}</td>
+            <td>{{patient.dateOfBirth | displayDate}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    
+  </div>
+  
 </div>
-</div>
+
+<!-- <p *ngFor="let patient of patients">
+  <a class="a_doctor" style="word-spacing: 11px;font-size: 20px; text-decoration: none;  padding: 0px 10px;" [routerLink]="['/doctor/workingWithPatient', patient._id]">{{ patient.email }} | {{ patient.name }} | {{ patient.surname }}</a>
+
+</p>  -->

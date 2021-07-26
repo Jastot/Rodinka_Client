@@ -6,6 +6,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KeyValue } from '@angular/common';
 import { diagService } from '../services/diag.service';
+import { Subscription } from 'rxjs';
+import { GlvarsService } from '../glvars.service';
 
 @Component({
   selector: 'app-patients-card',
@@ -18,26 +20,35 @@ export class PatientsCardComponent implements OnInit {
   currentRoutt!: any;
   n!: any;
   q!: any;
+  
   constructor(private userService: UserService, private diagservice: diagService,
     private router: Router, 
+    private glvars : GlvarsService,
     private activatedRouter: ActivatedRoute) {
       this.patientForm = new FormGroup({
         diagnoz: new FormControl(null,[Validators.required]),
         password: new FormControl(null,[Validators.required]),
         rmbME: new FormControl(null, [Validators.required])
       });
-     }
-  id: string = "";
- 
+    }
+    id: string = "";
+    
+    newMsg(value:any){
+      this.glvars.changeMessage(value);
+    }
+    message?:any;
+    subscription?: Subscription;
   reverseKeyOrder = (a: KeyValue<string,string | undefined>, b: KeyValue<string,string | undefined>): number => {
     return a.key > b.key ? -1 : (b.key > a.key ? 1 : 0);
   }
   async ngOnInit() {
+    this.newMsg(true);
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
     this.patients = await res.data;
     this.addSome(this.patients);
     console.log(this.patients.consultations)
+    this.newMsg(false);
   }
 
   toggleText: string = "Изменить";
@@ -54,7 +65,7 @@ export class PatientsCardComponent implements OnInit {
       "Фамилия: ": patient.surname?.toString(),
       "Имя: ": patient.name?.toString(),
       "Email: ": patient.email?.toString(),
-      "Дата рождения: ": patient.dateOfBirth?.slice(0,10).toString()
+      // "Дата рождения: ": patient.dateOfBirth?.slice(0,10).toString()
     }
   }
 

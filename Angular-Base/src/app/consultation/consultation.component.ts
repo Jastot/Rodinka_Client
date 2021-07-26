@@ -12,6 +12,8 @@ import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser
 import { DisplayDatePipe } from '../display-date.pipe';
 import { UserService } from '../services/user.service';
 import { IUser } from '../interfaces/user-interface';
+import { Subscription } from 'rxjs';
+import { GlvarsService } from '../glvars.service';
 
 @Component({
   selector: 'app-consultation',
@@ -19,19 +21,29 @@ import { IUser } from '../interfaces/user-interface';
   styleUrls: ['./consultation.component.css']
 })
 export class ConsultationComponent implements OnInit {
+  newMsg(value:any){
+    this.glvars.changeMessage(value);
+  }
+  message?:any;
+  subscription?: Subscription;
   constructor( private activatedRouter: ActivatedRoute,
     private ConsultationService: ConsultationService,
     private fileService:fileService,
-    private UserService: UserService) { 
+    private UserService: UserService,
+    private glvars: GlvarsService) { 
     
   }
   elid!:string;
   _id:string = this.activatedRouter.snapshot.url[2].path;
   consultation!: any;
   user!:any;
-  photos:{id:string,link:string,minimapNum:number}[]=[];
+  photos:{id:string,link:string,minimapNum:number, nndata?:any}[]=[];
+  activePhoto:{id?:any, link:any,minimapNum:any, nndata?:any}={link:undefined,minimapNum:0};
+  showModal:boolean=false;
+  banbuttons:Boolean=false;
 
   async ngOnInit() {
+    this.newMsg(true);
     this.elid = this.activatedRouter.snapshot.url[4].path;
     this.consultation = await this.ConsultationService.getConsultation(this.elid);
     this.consultation = this.consultation.consultation;
@@ -47,6 +59,29 @@ export class ConsultationComponent implements OnInit {
         })
       }
     }
+    this.newMsg(false);
+  }
+  togglePhoto(e:any){
+    let target = e.currentTarget;
+    let id = target.id;
+    let photo = this.photos.find(e=>e.id==id);
+    this.activePhoto = {link: target.src,minimapNum:photo?.minimapNum, id:photo?.id, nndata:photo?.nndata||{}};
+    this.showModal=!this.showModal;
+    console.log(this.showModal)
+  }
+  toggleModal(){
+    this.showModal=!this.showModal;
+  }
+  async reqcnn(){
+    this.newMsg(true);
+    this.banbuttons=true;
+    let res = await this.fileService.reqcnn(this.activePhoto.id);
+    this.activePhoto.nndata = res;
+    this.photos.find((e,i)=>{if(e.id==this.activePhoto.id){
+      this.photos[i].nndata=res;
+    }})
+    this.banbuttons=false;
+    this.newMsg(false);
 
   }
   // TODO: сделать (есть ui)
