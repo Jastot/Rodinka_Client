@@ -42,11 +42,9 @@ export class PatientsCardComponent implements OnInit {
   async ngOnInit() {
     this.id = this.activatedRouter.snapshot.url[2].path;
     let res = await this.userService.getUserById(this.id);
-    this.patients = res.data;
+    this.patients = await res.data;
     this.addSome(this.patients);
-    
-
-    // this.diagnoses = this.patients.diagnoses;
+    console.log(this.patients.consultations)
   }
 
   toggleText: string = "Изменить";

@@ -10,8 +10,8 @@ export interface IUser {
     token?: string;
     rmbMe?: boolean;
     userType?: 'doctor' | 'client' | 'admin';
-    diagnoses?: [IDiagnose];
+    diagnoses?: [{id:string,date:number, diagnosisTLDR:string}];
     operations?:[];
-    consultations?:[IConsultation];
+    consultations?:[{id:string,date:number}];
     analyzes?:[];
 }

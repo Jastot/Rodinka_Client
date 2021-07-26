@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SomeImage } from '../interfaces/some-image';
 import { fileService } from '../services/file-upload.service';
+import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-consultation-creation',
@@ -17,41 +18,69 @@ import { fileService } from '../services/file-upload.service';
 export class ConsultationCreationComponent implements OnInit {
   image: HTMLCollectionOf<HTMLImageElement>; 
   imagesList:SomeImage[];
-
-  
-
-consultationForm: FormGroup
+  consultationForm: FormGroup;
+  baza: string = 'https://moletrainer.xyz'
   constructor(private ConsultationService: ConsultationService,
     private Location: Location,
     private activatedRouter: ActivatedRoute,
-    private fileService : fileService
+    private fileService : fileService,
+    private DomSanitizer : DomSanitizer
     ) {
+      this.fileToUpload=null;
       this.imagesList = [];
       this.image = document.images;
-    this.consultationForm = new FormGroup({
-      diagnose: new FormControl(null,[Validators.required]),
-      complaints: new FormControl(null,[Validators.required]),
-      anamnesis: new FormControl(null, [Validators.required]),
-      dermatoscopy: new FormControl(null,[Validators.required]),
-      survey: new FormControl(null, [Validators.required]),
-      recommendations: new FormControl(null,[Validators.required]),
-      histology: new FormControl(null, [Validators.required]),
-      photoes: new FormControl(null, [Validators.required])
-    });
-    
-   }
-
-
-
-   id: string = "";
- 
-   ngOnInit(): void {
+      this.consultationForm = new FormGroup({
+        diagnosis: new FormControl(null,[Validators.required]),
+        complaints: new FormControl(null,[Validators.required]),
+        // anamnesis: new FormControl(null, [Validators.required]),
+        // dermatoscopy: new FormControl(null,[Validators.required]),
+        plans: new FormControl(null, [Validators.required]),
+        recommendations: new FormControl(null,[Validators.required]),
+        examination: new FormControl(null,[Validators.required]),
+        // histology: new FormControl(null, [Validators.required]),
+        photos: new FormControl(null, [Validators.required])
+      });
   }
- 
+  _id: string = this.activatedRouter.snapshot.url[2].path;
+  photos: {id:string, link?:string, minimapNum?:number}[] = [];
+  photosQueue: Array<File>=[];
+  halt: boolean = false;
+  ngOnInit(): void {
+    
+  }
+
   fileToUpload: File | null = null;
-  handleFileInput(event: Event) {
-    this.fileToUpload = (<HTMLInputElement>event.target)?.files![0];
-   // this.creatingImage();
+  handleFileInput(e: Event) {
+    this.halt=!this.halt;
+    let target = <any>e.target;
+    if(target.files[0].length>1){
+      this.photosQueue.push(target.files);
+      
+    } else {
+      this.photosQueue.push(target.files[0]);
+    }
+    this.sendPhotos().then((d)=>{
+      this.halt=!this.halt;
+      target.value="";
+    }).catch((err)=>{
+      this.halt=!this.halt;
+      alert(`Err: ${err.toString()}`);
+    })
+  }
+  async sendPhotos(){
+    for (let queueMember of this.photosQueue){
+      var fd = new FormData();
+      fd.append('_id', this._id);
+      fd.append('token', localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
+      fd.append('img', <File>queueMember);        
+      let photo = await this.fileService.postphoto(fd);
+      this.photos.push({
+        id:photo.id,
+        link:`${this.baza}/static/${photo.filename}`,
+        minimapNum: this.photos.length+1
+      })
+    }
+    this.photosQueue=[];
   }
   // uploadFileToActivity() {
   //   this.fileUploadService.postFile(this.fileToUpload);
@@ -70,37 +99,13 @@ consultationForm: FormGroup
   toggleShow(id:number) {
   this.isShowns[id] = ! this.isShowns[id];
   }
-  async create()
-  {
+  async create(){
     var registr: IConsultation = this.consultationForm.value;
-    console.log(registr);
-    this.id = this.activatedRouter.snapshot.url[2].path;
-    console.log("id: ", this.id);
-    
-    try
-    {
-      let a = await this.ConsultationService.postConsultation(this.id,registr);
-
-      console.log(this.fileToUpload);
-      var fd = new FormData();
-      fd.append('id',`${a.data._id}`)
-      fd.append('token',localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
-      fd.append('img',<File> this.fileToUpload, this.fileToUpload?.name);
-      
-      // formData.append('userpic[]', myFileInput1.files[0], 'chris1.jpg');
-      // formData.append('userpic[]', myFileInput2.files[0], 'chris2.jpg');
-      console.log(fd.get('id'));
-      console.log(fd.get('token'));
-      console.log(fd.get('img'));
-      
-      await this.fileService.postphoto(fd);
-
-      this.Location.back();
-    } 
-    catch(err){
-      console.log(err);
-    };
-  
+    this._id = this.activatedRouter.snapshot.url[2].path;
+    registr._id=this._id;
+    registr.photos=this.photos;
+    await this.ConsultationService.addConsultation(registr);
+    this.Location.back();  
   }
   
   // creatingImage()
@@ -123,6 +128,6 @@ consultationForm: FormGroup
 
   goBack()
   {
-    
+    this.Location.back();
   }
 }

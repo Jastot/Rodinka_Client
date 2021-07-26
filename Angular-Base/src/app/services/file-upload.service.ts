@@ -15,7 +15,12 @@ import { HttpClient } from '@angular/common/http';
       return this.baseUrl + url;
     }
 
-    async postphoto(data: FormData): Promise<{data:FormData}> {
-      return this.http.post<{data:FormData}>(this.getUrl('/photos/uploadPhoto'), data).toPromise();
+    async postphoto(data: FormData): Promise<{id:string, success:boolean, filename:string}> {
+      return this.http.post<{id:string, success:boolean, filename:string}>(this.getUrl('/photos/uploadPhoto'), data).toPromise();
+    }
+    async getphoto(id:string): Promise<{data:string}> {
+      let token = localStorage.getItem('token')||sessionStorage.getItem('token');
+      let payload = {"_id":id, token}
+      return this.http.post<{data:string}>(this.getUrl('/photos/getPhoto'), payload).toPromise();
     }
   }

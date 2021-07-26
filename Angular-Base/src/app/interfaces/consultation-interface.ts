@@ -6,5 +6,5 @@ export interface IConsultation {
     recommendations: string;
     diagnosis: string;
     date: number; 
-    photoes: [{id:string}];
+    photos?: {id:string, minimapNum?:number}[];
 }

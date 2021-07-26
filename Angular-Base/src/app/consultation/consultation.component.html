@@ -1,124 +1,75 @@
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="header_list">
-    <div class="header_title">Э.С.О.Н.К.</div>
-      <div class="header_list_button">
-      <button class="headerButton">🢠 Назад</button>
-      <button class="headerButton">🚪 Выйти</button>
+<div class="modal" id="modal">
+  <div class="modal-dialog modal-xl"> 
+    <div class="modal-content">
+      <div class="modal-body">
+        <img id="modalimg" src="" alt="">
+      </div>
     </div>
   </div>
+</div>
+<script>
+  window.onload = function(){
+    window.myModal = new bootstrap.Modal(document.getElementById('modal'))
+  }
+</script>
+<div class="card" style="width: 90vw; margin: 50px auto;">
+  <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Консультация {{consultation.date | displayDate}}</h1>
+  <div class="card-body">
+    <div class="card mt-2">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Пациент</h3>
+        <p class="card-text">
+          <span *ngIf="user.name"><strong>Имя:</strong> {{user.name}} <br></span>
+          <span *ngIf="user.surname"><strong>Фамилия:</strong> {{user.surname}} <br></span>
+          <span *ngIf="user.additional_name"><strong>Отчество:</strong> {{user.additional_name}} <br></span>
+          <span *ngIf="user.dateOfBirth"><strong>ДР:</strong> {{user.dateOfBirth | displayDate}},  <br></span>
 
-    <div class="content">
-        <div class="box_spiski">
-            <div class="container_spiski">
-                <div class="dropdown">
-                  <div class="select">
-                    <span>Два инвалида-колясочника-армянина едут по пустыне. ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span>Видят лампу. ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span>Один из них натирает её. ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span>Появиляется джинн и говорит: ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span>"У вас одно желание на двоих".▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span> Те в один голос: "Хотим ходить". ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span> Джинн подумал и говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male">Два инвалида-колясочника-армянина едут по пустыне. Видят лампу. Один из них натирает её. Появиляется джинн и говорит: "У вас одно желание на двоих". Те в один голос: "Хотим ходить". Джинн подумал м говорит: "Ну так как у вас одно желание на двоих, то ходить будете по очереди!". Ну и дал им нарды.</div>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <div class="select">
-                    <span>Ну и дал им нарды... ▼</span>
-                  </div>
-                  <div class="dropdown-menu">
-                    <div id="male"> Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахах Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахммммм Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахах Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахах Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахах м м Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахах Хахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахахХахахах хахахаха аахахахах хахаахахах х хахахах ахахахах </div>
-                  </div>
-                </div>
-          
-          </div>
-        </div>
+        </p>
+      </div>
     </div>
-    <script>
-        /*Dropdown Menu*/
-$('.dropdown').click(function () {
-        $(this).attr('tabindex', 1).focus();
-        $(this).toggleClass('active');
-        $(this).find('.dropdown-menu').slideToggle(300);
-    });
-    $('.dropdown').focusout(function () {
-        $(this).removeClass('active');
-        $(this).find('.dropdown-menu').slideUp(300);
-    });
-    $('.dropdown .dropdown-menu li').click(function () {
-        $(this).parents('.dropdown').find('span').text($(this).text());
-        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-    });
-/*End Dropdown Menu*/
-
-
-$('.dropdown-menu li').click(function () {
-  var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
-      msg = '<span class="msg">Hidden input value: ';
-  $('.msg').html(msg + input + '</span>');
-}); 
-    </script>
-</body>
-</html>
+    <div class="card mt-2" *ngIf="consultation.diagnosis">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Диагноз</h3>
+        <p class="card-text">{{ consultation.diagnosis }}</p>
+      </div>
+    </div>
+    <div class="card mt-2" *ngIf="consultation.complaints">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Жалобы</h3>
+        <p class="card-text">{{ consultation.complaints }}</p>
+      </div>
+    </div>
+    <div class="card mt-2" *ngIf="consultation.examination">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Результат осмотра</h3>
+        <p class="card-text">{{ consultation.examination }}</p>
+      </div>
+    </div>
+    <div class="card mt-2" *ngIf="consultation.plans">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">План обследования</h3>
+        <p class="card-text">{{ consultation.plans }}</p>
+      </div>
+    </div>
+    <div class="card mt-2" *ngIf="consultation.recommendations">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Рекомендации</h3>
+        <p class="card-text">{{ consultation.recommendations }}</p>
+      </div>
+    </div>
+    <div class="card mt-2" *ngIf="consultation.photos">
+      <div class="card-body">
+        <h3 class="card-title" style="font-weight: bold;">Фотоматериалы</h3>
+        <div class="container border rounded p-0 mt-2 ml-0" style="text-align: center;">
+          <div class="d-flex pl-2 pt-1" style="overflow-x: scroll; white-space:nowrap; flex-wrap: nowrap; width:100%;">
+              <div class="mr-2" style="flex-basis:10vw; flex-shrink:0;"
+              onclick="window.myModal.show()"
+              *ngFor="let photo of photos">
+                  <img class="d-block w-100" style="object-fit: cover; height: 85%;" src="{{photo.link}}" alt="">
+                  <span class="d-block w-100">{{photo.minimapNum}}</span>
+              </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

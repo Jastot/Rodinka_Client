@@ -36,7 +36,7 @@
         <div class="card" style="width: 50vw; margin: 50px auto;">
           <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Авторизация</h1>
           <div class="card-body">
-            <div class="input_s_box">
+            <div class="input_s_box" (keyup.enter)="onLogin()">
                 <div class="input_s">
                     <input type="text" placeholder=" Введите Логин"formControlName="login" >
                 </div>
@@ -52,7 +52,7 @@
                     Запомнить пароль
                     <input type="checkbox" id="checkbox_check" class="rememberBox" formControlName="rmbME">
                 </div>
-                <button type="button" class="btn btn-outline-success" (click)="onLogin()"  >Войти</button>
+                <button type="button" class="btn btn-outline-success" (click)="onLogin()">Войти</button>
           </div>
           </div>
         </div>
