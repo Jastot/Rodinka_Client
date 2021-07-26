@@ -49,6 +49,15 @@
                   <input type="text" placeholder="  диагноз" class="inputCreateConsultation" formControlName="recommendations">
                 </div>
               </div>
+              <div class="dropdown" >
+                <div class="select" (click)="toggleShow(4)" >
+                  <span  >Дата ▼</span>
+                </div>
+                <div class="dropdown-menu" *ngIf="isShowns[4]"  class="row container-fluid"  id="divshow">
+                  <input type="date" placeholder="  Дата" class="inputCreateConsultation" formControlName="date">
+                </div>
+              </div>
+              
 
         
         </div>

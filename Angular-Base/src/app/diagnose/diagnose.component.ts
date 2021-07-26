@@ -16,6 +16,8 @@ export class DiagnoseComponent implements OnInit {
   currentRoutt!: any;
   n!: any;
   q!: any;
+  _id:string = this.activatedRouter.snapshot.url[2].path;
+  user!: any;
   constructor(private userService: UserService, private diagservice: diagService,
     private router: Router, 
     private activatedRouter: ActivatedRoute) {
@@ -29,6 +31,8 @@ export class DiagnoseComponent implements OnInit {
   async ngOnInit() {
     var und;
     this.id = this.activatedRouter.snapshot.url[4].path;
+    this.user = await this.userService.getUserById(this._id);
+    this.user = this.user.data;
     und = await this.diagservice.getDiagById(this.id)
     if( und != undefined){
     let res =  und;

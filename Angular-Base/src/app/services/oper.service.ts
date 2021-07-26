@@ -26,11 +26,11 @@ export class operService {
       return this.http.post<{data:IOperation}>(this.getUrl('/operations/addOperation'), data).toPromise();
     }
   
-    async getOperById(id: string) : Promise<{description:IOperation}> {
+    async getOperById(id: string) : Promise<{operation:IOperation}> {
       let params = new HttpParams().set("_id",id).set("token",localStorage.getItem("token") as string || sessionStorage.getItem("token") as string);
       console.log(params);
       let token = localStorage.getItem("token") as string || sessionStorage.getItem("token") as string;
-      return this.http.post<{description:IOperation}>(this.getUrl(`/operations/getOperation`),{"_id":id, "token":token}).toPromise();
+      return this.http.post<{operation:IOperation}>(this.getUrl(`/operations/getOperation`),{"_id":id, "token":token}).toPromise();
     }
  
     async putOperById(id: number, data: IOperation ): Promise<IOperation> {

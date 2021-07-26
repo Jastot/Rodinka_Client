@@ -1,1 +1,56 @@
-<p>operation works!</p>
+<div class="modal" id="modal">
+    <div class="modal-dialog modal-xl"> 
+      <div class="modal-content">
+        <div class="modal-body">
+          <img id="modalimg" src="" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.onload = function(){
+      window.myModal = new bootstrap.Modal(document.getElementById('modal'))
+    }
+  </script>
+  <div class="card" style="width: 90vw; margin: 50px auto;">
+    <h1 class="bg-gradient-info card-header" style="background-color:rgb(211, 224, 250);;">Операция {{patients.date | displayDate}}</h1>
+    <div class="card-body">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h3 class="card-title" style="font-weight: bold;">Пациент</h3>
+         <p class="card-text">
+           <span *ngIf="user.name"><strong>Имя:</strong> {{user.name}} <br></span>
+           <span *ngIf="user.surname"><strong>Фамилия:</strong> {{user.surname}} <br></span>
+           <span *ngIf="user.additional_name"><strong>Отчество:</strong> {{user.additional_name}} <br></span>
+           <span *ngIf="user.dateOfBirth"><strong>ДР:</strong> {{user.dateOfBirth | displayDate}},  <br></span>
+ 
+         </p>
+        </div>
+      </div>
+      <div class="card mt-2" *ngIf="patients.diagnosis">
+        <div class="card-body">
+          <h3 class="card-title" style="font-weight: bold;">Диагноз</h3>
+          <p class="card-text">{{ patients.diagnosis }}</p>
+        </div>
+      </div>
+      <div class="card mt-2" *ngIf="patients.descriptionTLDR">
+        <div class="card-body">
+          <h3 class="card-title" style="font-weight: bold;">Описание кратко</h3>
+          <p class="card-text">{{ patients.descriptionTLDR }}</p>
+        </div>
+      </div>
+      <div class="card mt-2" *ngIf="patients.description">
+        <div class="card-body">
+          <h3 class="card-title" style="font-weight: bold;">Описание</h3>
+          <p class="card-text">{{ patients.description }}</p>
+        </div>
+      </div>
+      
+      <div class="card mt-2" *ngIf="patients.recommendations">
+        <div class="card-body">
+          <h3 class="card-title" style="font-weight: bold;">Рекомендации</h3>
+          <p class="card-text">{{ patients.recommendations }}</p>
+        </div>
+      </div>
+      
+  </div>
